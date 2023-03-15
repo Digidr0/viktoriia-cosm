@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import { MailOutlined, UnorderedListOutlined, SendOutlined } from "@ant-design/icons";
 const items = [
   {
-    label: <Link to={`/welcome`}>Главная</Link>,
-    key: "/welcome",
+    label: <Link to={`/viktoriia-cosm/welcome`}>Главная</Link>,
+    key: "/viktoriia-cosm/welcome",
     icon: <MailOutlined />,
   },
 
   {
-    label: <Link to={`/prices`}>Прайсы</Link>,
-    key: "/prices",
+    label: <Link to={`/viktoriia-cosm/prices`}>Прайсы</Link>,
+    key: "/viktoriia-cosm/prices",
     icon: <UnorderedListOutlined />,
   },
   {

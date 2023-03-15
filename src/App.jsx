@@ -20,9 +20,9 @@ function App() {
         <Layout style={{backgroundColor:"transparent "}}>
           <Header />
           <Routes>
-            <Route path="/welcome" element={<Welcome />}></Route>
-            <Route path="/*" element={<Navigate to="welcome" />}></Route>
-            <Route path="prices" element={<Prices />}></Route>
+            <Route path="/viktoriia-cosm/welcome" element={<Welcome />}></Route>
+            <Route path="/*" element={<Navigate to="/viktoriia-cosm/welcome" />}></Route>
+            <Route path="/viktoriia-cosm/prices" element={<Prices />}></Route>
           </Routes>
           </Layout>
         </Router>

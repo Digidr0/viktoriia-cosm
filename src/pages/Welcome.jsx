@@ -1,6 +1,7 @@
 import { Button, Descriptions, Divider, Image, Space } from "antd";
 import Service from "../components/Service";
 import "./welcome.css";
+import portraitImg from "/portrait.png"
 function Welcome(props) {
   return (
     <div className="Welcome Page">
@@ -11,14 +12,14 @@ function Welcome(props) {
           <h1>Виктория</h1>
           <p>
             ваш личный косметолог. Добро пожаловать на мой личный сайт. Здесь вы
-            можете узанть цены на все процедуры и записаться на прием.
+            можете узанть цены на процедуры и записаться на прием.
           </p>
           <Button type="primary" onClick={() => window.open("https://t.me/V_kosmy")}>Записаться прямо сейчас</Button>
         </div>
         <Image
           width={"100%"}
           className="portrait"
-          src="..\src\assets\portrait.png"
+          src={portraitImg}
         />
       </div>
       <Divider style={{ marginTop: "1em", fontSize: "1.5em" }}>
