@@ -11,3 +11,20 @@ iframe{
     outline: none;
     border: none;
 }
+
+
+
+.ant-table-row:nth-child(even) {
+    background-color: hwb(319 5% 9%);
+  }
+
+  h3{
+    font-weight: 800;
+    margin: 2em;
+    font-size: 1.8em;
+  }
+  .hr{
+    width: 10vw;
+    height: 2px;
+    background-color: #ccc;
+  }

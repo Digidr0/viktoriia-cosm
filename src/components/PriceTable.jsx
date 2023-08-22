@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { Table } from "antd";
 import { v4 as uuidv4 } from "uuid";
 
-const sheetId = "1OrP_Ud2W2SXYaMMJ6GwYQJ16_m588g8UPQklk6qCxUY";
-const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
-const sheetName = "user-data";
+const spreadsheetId = "1OrP_Ud2W2SXYaMMJ6GwYQJ16_m588g8UPQklk6qCxUY";
+const base = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?`;
+const sheetName = "Пилинги";
 const query = encodeURIComponent("Select *");
-const url = `${base}&sheet=${sheetName}&tq=${query}`;
+// const url = `${base}&sheet=${sheetName}&tq=${query}`;
+////https://docs.google.com/spreadsheets/d/1zdF7StPiiW-jTKGHuIyKtFvjHUcwerMwHCyIrH_HD4c/gviz/tq?tqx=out:csv&gid=1820138425&tq=SELECT+A%2CC%2CD+where+B+contains+%27R%27
 
 function PriceTable(props) {
   const [columns, setColumns] = useState("");
@@ -15,7 +16,7 @@ function PriceTable(props) {
   const [isLoading, setIsLoading] = useState(true);
   const getData = new Promise(function (resolve, reject) {
     axios
-      .get(url)
+      .get(`${base}&sheet=${props.sheetName}&tq=${query}`)
       .then((res) => {
         resolve(res.data);
       })
@@ -29,7 +30,7 @@ function PriceTable(props) {
           title: el.label,
           dataIndex: el.label.toLowerCase(),
           key: el.id,
-          align: "center",
+          fixed: 'left',
         };
       })
     );
@@ -51,22 +52,20 @@ function PriceTable(props) {
 
   useEffect(() => {
     getData.then((result) => generateTable(result)).then(setIsLoading(false));
+    
+    console.log(data);
   }, []);
 
   return (
-    <div className="PriceTable component">
-      {
-        <Table
-          columns={columns}
-          dataSource={data}
-          loading={isLoading}
-          sticky={columns.length <= 5 ? false : true}
-          pagination={false}
-          bordered
-          size="middle"
-        />
-      }
-    </div>
+    <Table
+      columns={columns}
+      dataSource={data}
+      loading={isLoading}
+      sticky={columns.length <= 5 ? false : true}
+      pagination={false}
+      bordered
+      size="small"
+    />
   );
 }
 export default PriceTable;
