@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Table } from "antd";
+import { Space, Table, Tooltip } from "antd";
 import { v4 as uuidv4 } from "uuid";
 
 const spreadsheetId = "1OrP_Ud2W2SXYaMMJ6GwYQJ16_m588g8UPQklk6qCxUY";
@@ -30,7 +30,7 @@ function PriceTable(props) {
           title: el.label,
           dataIndex: el.label.toLowerCase(),
           key: el.id,
-          fixed: 'left',
+          fixed: "left",
         };
       })
     );
@@ -52,20 +52,41 @@ function PriceTable(props) {
 
   useEffect(() => {
     getData.then((result) => generateTable(result)).then(setIsLoading(false));
-    
-    console.log(data);
   }, []);
 
   return (
-    <Table
-      columns={columns}
-      dataSource={data}
-      loading={isLoading}
-      sticky={columns.length <= 5 ? false : true}
-      pagination={false}
-      bordered
-      size="small"
-    />
+    <>
+      <div className="title">
+        {!props.title ? (
+          <div className="label-container">
+            <div className="hr"></div>
+            <h3 className="label">{props.sheetName}</h3>
+            <div className="hr"></div>
+          </div>
+        ) : (
+          <div className="label-container">
+            <div className="hr"></div>
+            <Tooltip placement="top" title={props.title}>
+              <h3 className="label">
+                <u>{props.sheetName}</u>
+              </h3>
+            </Tooltip>
+            <div className="hr"></div>
+          </div>
+        )}
+        {props.description && <span className="description">{props.description}</span>}
+      </div>
+      <Table
+      className="Table"
+        columns={columns}
+        dataSource={data}
+        loading={isLoading}
+        sticky={columns.length <= 5 ? false : true}
+        pagination={false}
+        bordered
+        size="small"
+      />
+    </>
   );
 }
 export default PriceTable;

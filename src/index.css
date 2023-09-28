@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
 :root {
-  font-family: 'Comfortaa', cursive, Helvetica, Arial, sans-serif;
+  font-family: "Comfortaa", cursive, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-  
 
   color-scheme: light dark;
   color: rgba(43, 43, 43, 0.87);
@@ -16,9 +15,10 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --accent-color:#cf59ab;
+  /* --accent-color: #cc66ad; */
+  --accent-color: #fa8072;
 }
-*::selection{
+*::selection {
   background-color: var(--accent-color);
   color: whitesmoke;
   /* border: 1px solid red; */
@@ -28,14 +28,12 @@ body {
   padding: 0;
   margin: 0;
   min-height: 100vh;
-  
+  overflow-x: hidden;
   width: 100vw;
 }
 @media (max-width: 700px) {
-  * {
-    /* color: firebrick; */
-  }
-  :root{
+  :root {
+  /* overflow-x: auto; */
     font-size: 12px;
   }
 }

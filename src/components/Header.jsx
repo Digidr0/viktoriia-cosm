@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import { MailOutlined, UnorderedListOutlined, SendOutlined } from "@ant-design/icons";
 const items = [
   {
-    label: <Link to={`/viktoriia-cosm/welcome`}>Главная</Link>,
-    key: "/viktoriia-cosm/welcome",
+    label: <Link to={`/welcome`}>Главная</Link>,
+    key: "/welcome",
     icon: <MailOutlined />,
   },
 
   {
-    label: <Link to={`/viktoriia-cosm/prices`}>Прайсы</Link>,
-    key: "/viktoriia-cosm/prices",
+    label: <Link to={`/prices`}>Прайсы</Link>,
+    key: "/prices",
     icon: <UnorderedListOutlined />,
   },
   {
@@ -38,7 +38,7 @@ function Header(props) {
         selectedKeys={[current]}
         mode="horizontal"
         items={items}
-        style={{ display: "flex", justifyContent: "center" }}
+        style={{ display: "flex", justifyContent: "space-evenly", fontSize:"0.8em"}}
       />
     </div>
   );
