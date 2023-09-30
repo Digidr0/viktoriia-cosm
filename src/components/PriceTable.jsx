@@ -2,10 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Space, Table, Tooltip } from "antd";
 import { v4 as uuidv4 } from "uuid";
-
+import Showdown from "showdown";
+const converter = new Showdown.Converter();
 const spreadsheetId = "1OrP_Ud2W2SXYaMMJ6GwYQJ16_m588g8UPQklk6qCxUY";
 const base = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?`;
-const sheetName = "Пилинги";
 const query = encodeURIComponent("Select *");
 // const url = `${base}&sheet=${sheetName}&tq=${query}`;
 ////https://docs.google.com/spreadsheets/d/1zdF7StPiiW-jTKGHuIyKtFvjHUcwerMwHCyIrH_HD4c/gviz/tq?tqx=out:csv&gid=1820138425&tq=SELECT+A%2CC%2CD+where+B+contains+%27R%27
@@ -44,7 +44,9 @@ function PriceTable(props) {
               row.c[index] != null ? row.c[index].v : null,
             key: uuidv4(),
           };
+          // console.log(row.c[index]);
         });
+
         return object;
       })
     );
@@ -74,10 +76,12 @@ function PriceTable(props) {
             <div className="hr"></div>
           </div>
         )}
-        {props.description && <span className="description">{props.description}</span>}
+        {props.description && (
+          <span className="description">{props.description}</span>
+        )}
       </div>
       <Table
-      className="Table"
+        className="Table"
         columns={columns}
         dataSource={data}
         loading={isLoading}

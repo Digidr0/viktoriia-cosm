@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, Navigate, BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route, Navigate, HashRouter as Router } from "react-router-dom";
 import Header from "./components/Header";
 import Welcome from "./pages/Welcome";
 import Prices from "./pages/Prices";

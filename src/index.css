@@ -17,11 +17,26 @@
 
   /* --accent-color: #cc66ad; */
   --accent-color: #fa8072;
+
+  --clr: #505050;
+  --bgclr: hsl(180, 3%, 95%);
+  --bgclr2: hsl(240, 3%, 85%);
+  color: var(--clr);
 }
 *::selection {
   background-color: var(--accent-color);
   color: whitesmoke;
-  /* border: 1px solid red; */
+}
+
+
+.neu-drop {
+  background: var(--bgclr);
+  box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px var(--bgclr2);
+  outline: 1px solid #ffffffaa;
+}
+.neu-inner{
+  background: var(--bgclr);
+  box-shadow: -3px -3px 5px #ffffff inset, 3px 3px 5px var(--bgclr2) inset;
 }
 
 body {
@@ -33,7 +48,7 @@ body {
 }
 @media (max-width: 700px) {
   :root {
-  /* overflow-x: auto; */
+    /* overflow-x: auto; */
     font-size: 12px;
   }
 }
