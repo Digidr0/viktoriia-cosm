@@ -74,12 +74,37 @@
   font-size: 2em;
   gap: 0.5em;
 }
+.description{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  gap: 0.5em;
+}
+.accent-btn{
+  font: inherit;
+  /* background-color: var(--accent-color) !important; */
+  /* color: var(--accent-color) !important; */
+  /* color: white; */
+  color: var(--clr);
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.3em 3em;
+  font-weight: 500;
+  font-size: 0.55em;
+  cursor: pointer;
+  filter: saturate(2);
+}
 .label-container {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  padding: 0.5em;
+  padding: 0.3em;
 }
 .image-label {
   font-weight: 800;

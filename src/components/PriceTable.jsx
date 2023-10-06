@@ -4,6 +4,7 @@ import { Space, Table, Tooltip } from "antd";
 import { v4 as uuidv4 } from "uuid";
 import Showdown from "showdown";
 const converter = new Showdown.Converter();
+import { InfoCircleFilled } from "@ant-design/icons";
 const spreadsheetId = "1OrP_Ud2W2SXYaMMJ6GwYQJ16_m588g8UPQklk6qCxUY";
 const base = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?`;
 const query = encodeURIComponent("Select *");
@@ -57,22 +58,25 @@ function PriceTable(props) {
   }, []);
 
   return (
-    <>
+    <div className="PriceTable Component" id={props.anchor}>
       <div className="title">
         {!props.title ? (
           <div className="label-container">
             <div className="hr"></div>
-            <h3 className="label">{props.sheetName}</h3>
+            <div className="label-components">
+              <h3 className="label">{props.sheetName}</h3>
+            </div>
             <div className="hr"></div>
           </div>
         ) : (
           <div className="label-container">
             <div className="hr"></div>
-            <Tooltip placement="top" title={props.title}>
-              <h3 className="label">
-                <u>{props.sheetName}</u>
-              </h3>
+            <div className="label-components">
+              <h3 className="label">{props.sheetName}</h3>
+            <Tooltip color={"#fa8072"} placement="topLeft" title={props.title} >
+              <InfoCircleFilled style={{fontSize:"1.25em"}}></InfoCircleFilled>
             </Tooltip>
+            </div>
             <div className="hr"></div>
           </div>
         )}
@@ -84,13 +88,13 @@ function PriceTable(props) {
         className="Table"
         columns={columns}
         dataSource={data}
-        loading={isLoading}
+        loading={false}
         sticky={columns.length <= 5 ? false : true}
         pagination={false}
         bordered
         size="small"
       />
-    </>
+    </div>
   );
 }
 export default PriceTable;

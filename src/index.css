@@ -19,8 +19,8 @@
   --accent-color: #fa8072;
 
   --clr: #505050;
-  --bgclr: hsl(180, 3%, 95%);
-  --bgclr2: hsl(240, 3%, 85%);
+  --bgclr: hsl(180, 3%, 93%);
+  --bgclr2: hsl(240, 3%, 83%);
   color: var(--clr);
 }
 *::selection {
@@ -51,4 +51,8 @@ body {
     /* overflow-x: auto; */
     font-size: 12px;
   }
+}
+a{
+  text-decoration: none;
+  color: inherit;
 }
