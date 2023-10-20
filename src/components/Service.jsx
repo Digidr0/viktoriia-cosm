@@ -13,6 +13,7 @@ function Service(props) {
         <div className="label-container neu-inner">
           <span className="image-label" to="/prices">
             {props.text}
+          <p className="image-description">{props.descripion}</p>
           </span>
         </div>
         {props.anchor && (
