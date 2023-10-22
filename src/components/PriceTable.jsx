@@ -73,8 +73,8 @@ function PriceTable(props) {
             <div className="hr"></div>
             <div className="label-components">
               <h3 className="label">{props.sheetName}</h3>
-            <Tooltip color={"#fa8072"} placement="topLeft" title={props.title} >
-              <InfoCircleFilled style={{fontSize:"1.25em"}}></InfoCircleFilled>
+            <Tooltip color={"#fa8072"} placement="topLeft" title={props.title}>
+              <InfoCircleFilled style={{fontSize:"1.5em"}}></InfoCircleFilled>
             </Tooltip>
             </div>
             <div className="hr"></div>
