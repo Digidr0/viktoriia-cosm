@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Контурная пластика губ",
+    "description": "Увеличение, а так же коррекция губ",
+    "src": "https://img.freepik.com/free-photo/woman-applying-lipstick-on-lips-with-brush-closeup_186202-5070.jpg?w=512",
+    "newPrice": 8500,
+    "oldPrice": null
+  },
+  {
+    "title": "Маска в подарок к любой процедуре",
+    "description": "Маска в подарок при покупке к любой процедуре",
+    "src": "https://img.freepik.com/free-photo/close-up-portrait-of-beautiful-young-woman-smiling-with-towels-after-take-bath-make-cosmetic-mask-on-her-face_197531-3400.jpg?w=512",
+    "newPrice": 0,
+    "oldPrice": 750
+  },
+  {
+    "title": "Биоревитализация",
+    "description": "Процедура способна оказать быстрое омолаживающее действие",
+    "src": "https://img.freepik.com/free-photo/hand-with-latex-glove-holding-vaccine-syringe_23-2149014339.jpg?w=512",
+    "newPrice": 4500,
+    "oldPrice": null
+  },
+  {
+    "title": "Миндальный пилинг",
+    "description": "Пилинг для лица с миндальной (гидрокси-фенилгликолевой) кислотой",
+    "src": "https://img.freepik.com/free-photo/cosmetologist-doing-face-treatment-and-applying-face-mask_1303-28042.jpg?w=512",
+    "newPrice": 2500,
+    "oldPrice": 3100
+  }
+]

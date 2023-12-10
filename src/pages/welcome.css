@@ -1,6 +1,14 @@
 .Welcome.Page {
   background-color: var(--bgclr);
   position: relative;
+  z-index: 3;
+}
+.spacer {
+  display: none;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .greeting-text h3 {
   font-size: 2em;
@@ -8,7 +16,7 @@
 }
 .greeting-text h1 {
   font-weight: 800;
-  font-size: 3.5em;
+  font-size: 3em;
   margin-left: -5px;
 }
 .greeting-text h1::after {
@@ -33,8 +41,9 @@
 }
 
 .portrait {
-  max-width: 500px;
+  max-width: 512px;
   min-width: 300px;
+  border-radius: 1em;
 }
 .image-container {
   position: relative;
@@ -116,7 +125,15 @@
   font-weight: 400;
   text-align: justify;
 }
+
 @media (max-width: 700px) {
+  .spacer {
+    display: flex;
+    top: -1em;
+    height: 200vh;
+    left: -2em;
+    width: calc(100% + 2em);
+  }
   .image-container {
     padding: 0.5em;
   }
@@ -139,6 +156,7 @@
     margin-top: 0em;
     height: 100%;
     font-weight: 400;
+    background-color: white;
   }
   .greeting-text {
     text-align: center;

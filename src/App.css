@@ -10,10 +10,18 @@
 .Page {
   padding: 2em 20vw 2em 20vw;
   height: 100%;
+  
 }
+.layer1 {
+  z-index: -1;
+  /* background-image: url(/src/assets/wave-haikei-9-16.svg); */
+  background-image: url(/src/assets/layered-waves-haikei-9-16.svg);
+  /* filter: invert(1); */
+}
+
 @media (max-width: 720px) {
   .Page {
-    padding: 1em 1vw 1em 1vw;
+    padding: 0em 1vw 1em 1vw;
   }
 
 }

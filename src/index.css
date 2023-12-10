@@ -17,10 +17,11 @@
 
   /* --accent-color: #cc66ad; */
   --accent-color: #fa8072;
+  --accent-color2: hsl(6, 91%, 69%);
 
   --clr: #505050;
-  --bgclr: hsl(180, 3%, 93%);
-  --bgclr2: hsl(240, 3%, 83%);
+  --bgclr: #edeeee;
+  --bgclr2: #d2d2d5;
   color: var(--clr);
 }
 *::selection {
@@ -55,4 +56,8 @@ body {
 a{
   text-decoration: none;
   color: inherit;
+}
+.line-through{
+  text-decoration: line-through;
+  text-decoration-thickness: 0.07em;
 }

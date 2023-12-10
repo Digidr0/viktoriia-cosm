@@ -1,7 +1,7 @@
 import { Button, Menu, Space } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import React, { useState } from "react";
-import { MailOutlined, UnorderedListOutlined, SendOutlined } from "@ant-design/icons";
+import { MailOutlined, UnorderedListOutlined, SendOutlined, FireTwoTone } from "@ant-design/icons";
 const items = [
   {
     label: <Link to={`/welcome`}>Главная</Link>,
@@ -13,6 +13,11 @@ const items = [
     label: <Link to={`/prices`}>Прайсы</Link>,
     key: "/prices",
     icon: <UnorderedListOutlined />,
+  },
+  {
+    label: <Link to={`/promotions`}>Акции</Link>,
+    key: "/promotions",
+    icon: <FireTwoTone twoToneColor="#ffa962"/>,
   },
   {
     label: (
@@ -38,7 +43,7 @@ function Header(props) {
         selectedKeys={[current]}
         mode="horizontal"
         items={items}
-        style={{ display: "flex", justifyContent: "space-evenly", fontSize:"0.8em"}}
+        style={{ display: "flex", justifyContent: "space-evenly", fontSize:"1em", borderBottom: "none"}}
       />
     </div>
   );

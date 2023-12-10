@@ -19,6 +19,12 @@ iframe {
   font-size: 1.7em;
   /* text-wrap: nowrap; */
 }
+.anticon-info-circle::before{
+  content: "23";
+  width: 100px;
+  height: 100px;
+
+}
 .label-components {
   margin: 0em 1em;
   display: flex;
@@ -53,4 +59,7 @@ iframe {
 }
 .Table {
   margin: 0 0.5em;
+}
+.price-tooltip{
+  margin-top: 1em;
 }

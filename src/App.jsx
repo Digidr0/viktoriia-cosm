@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, HashRouter as Router } from "react-router-dom"
 import Header from "./components/Header";
 import Welcome from "./pages/Welcome";
 import Prices from "./pages/Prices";
+import Promotions from "./pages/Promotions";
 import { ConfigProvider, Layout } from "antd";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/welcome" element={<Welcome />}></Route>
             <Route path="/*" element={<Navigate to="/welcome" />}></Route>
             <Route path="/prices" element={<Prices />}></Route>
+            <Route path="/promotions" element={<Promotions />}></Route>
           </Routes>
           </Layout>
         </Router>

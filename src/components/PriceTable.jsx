@@ -50,7 +50,7 @@ function PriceTable(props) {
 
         return object;
       })
-    );
+      );
   }
 
   useEffect(() => {
@@ -73,8 +73,8 @@ function PriceTable(props) {
             <div className="hr"></div>
             <div className="label-components">
               <h3 className="label">{props.sheetName}</h3>
-            <Tooltip color={"#fa8072"} placement="topLeft" title={props.title}>
-              <InfoCircleFilled style={{fontSize:"1.5em"}}></InfoCircleFilled>
+            <Tooltip color={"#fa8072"} placement="topLeft" title={props.title} >
+              <InfoCircleFilled style={{fontSize:"1.5em", margin:-10, padding:10}}></InfoCircleFilled>
             </Tooltip>
             </div>
             <div className="hr"></div>
@@ -88,7 +88,7 @@ function PriceTable(props) {
         className="Table"
         columns={columns}
         dataSource={data}
-        loading={false}
+        loading={isLoading}
         sticky={columns.length <= 5 ? false : true}
         pagination={false}
         bordered
