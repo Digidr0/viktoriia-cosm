@@ -1,18 +1,18 @@
+// import vid1 from "..//assets//videos/Cereal Milk 720P.mp4"
 function Promotion(props) {
-  const videos = [
-    "sugar-rush",
-    "costa-brava",
-    "spring",
-    "cereal-milk",
-    "mercury",
-  ]
-  console.log(props.position % 5);
   return (
     <div className="Promotion component neu-drop ">
-      <div className="promotion-border neu-inner">
-      <div className="video">
-        <video src={`https://backgrounds.tella.tv/${videos[props.position % 5]}-4k.mp4`} preload="true" autoPlay loop muted />
-      </div>
+      <div className="promotion-border">
+        <div className="promotion-video">
+          <div className="video-shadow neu-inner"></div>
+          <video
+            src={`/videos/vid${props.position % 5}.webm`}
+            preload="auto"
+            autoPlay
+            loop
+            muted
+          />
+        </div>
         <div className="promotion-photo-container neu-drop">
           <img className="promotion-photo" src={props.src} />
         </div>
@@ -30,7 +30,6 @@ function Promotion(props) {
           </span>
         </div>
       </div>
-      
     </div>
   );
 }

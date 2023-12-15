@@ -1,12 +1,12 @@
 import { Button, Menu, Space } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import React, { useState } from "react";
-import { MailOutlined, UnorderedListOutlined, SendOutlined, FireTwoTone } from "@ant-design/icons";
+import { DownCircleOutlined, UnorderedListOutlined, SendOutlined, FireTwoTone, HomeOutlined } from "@ant-design/icons";
 const items = [
   {
     label: <Link to={`/welcome`}>Главная</Link>,
     key: "/welcome",
-    icon: <MailOutlined />,
+    icon: <HomeOutlined />,
   },
 
   {
@@ -43,7 +43,8 @@ function Header(props) {
         selectedKeys={[current]}
         mode="horizontal"
         items={items}
-        style={{ display: "flex", justifyContent: "space-evenly", fontSize:"1em", borderBottom: "none"}}
+        style={{ display: "flex", justifyContent: "space-evenly", borderBottom: "none"}}
+        overflowedIndicator={<DownCircleOutlined />}
       />
     </div>
   );

@@ -13,18 +13,19 @@
     "newPrice": 0,
     "oldPrice": 750
   },
-  {
-    "title": "Биоревитализация",
-    "description": "Процедура способна оказать быстрое омолаживающее действие",
-    "src": "https://img.freepik.com/free-photo/hand-with-latex-glove-holding-vaccine-syringe_23-2149014339.jpg?w=512",
-    "newPrice": 4500,
-    "oldPrice": null
-  },
+
   {
     "title": "Миндальный пилинг",
     "description": "Пилинг для лица с миндальной (гидрокси-фенилгликолевой) кислотой",
     "src": "https://img.freepik.com/free-photo/cosmetologist-doing-face-treatment-and-applying-face-mask_1303-28042.jpg?w=512",
     "newPrice": 2500,
     "oldPrice": 3100
+  },
+  {
+    "title": "Биоревитализация",
+    "description": "Процедура способна оказать быстрое омолаживающее действие",
+    "src": "https://img.freepik.com/free-photo/hand-with-latex-glove-holding-vaccine-syringe_23-2149014339.jpg?w=512",
+    "newPrice": 4500,
+    "oldPrice": null
   }
 ]
