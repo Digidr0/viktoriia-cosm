@@ -9,7 +9,7 @@ import Header from "./components/Header";
 import Welcome from "./pages/Welcome";
 import Prices from "./pages/Prices";
 import Promotions from "./pages/Promotions";
-import { ConfigProvider, Layout } from "antd";
+import { ConfigProvider, Layout, FloatButton } from "antd";
 
 function App() {
   return (
@@ -49,6 +49,7 @@ function App() {
           </Layout>
         </Router>
       </ConfigProvider>
+      <FloatButton.BackTop/>
     </div>
   );
 }

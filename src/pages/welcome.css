@@ -91,11 +91,16 @@
   align-items: center;
   gap: 0.5em;
 }
-.accent-btn {
+.accent-btn:active{
+  color: inherit;
+  background: var(--bgclr);
+  box-shadow: -3px -3px 5px #ffffff inset, 3px 3px 5px var(--bgclr2) inset;
+}
+.accent-btn:focus, .accent-btn:hover{
+  color: var(--accent-color)
+}
+.accent-btn, .accent-btn:out-of-range {
   font: inherit;
-  /* background-color: var(--accent-color) !important; */
-  /* color: var(--accent-color) !important; */
-  /* color: white; */
   color: var(--clr);
   border: none;
   border-radius: 20px;
@@ -108,6 +113,7 @@
   cursor: pointer;
   filter: saturate(2);
 }
+
 .label-container {
   display: flex;
   justify-content: center;

@@ -13,7 +13,7 @@ function Welcome(props) {
           <h1>Виктория</h1>
           <p>
             ваш косметолог. Добро пожаловать на мой личный сайт. Здесь вы можете
-            узанть цены на процедуры и записаться на прием.
+            узнать цены на процедуры и записаться на приём.
           </p>
           <Button
             type="primary"
@@ -48,13 +48,12 @@ function Welcome(props) {
         {data.map((service, i) => {
           return (
             <Service
-              src={service.src}
+              src={'/services/' + service.src}
               descripion={service.descripion}
               text={service.text}
               anchor={service.anchor}
               key={i}
             ></Service>
-            
           );
         })}
       </Space>

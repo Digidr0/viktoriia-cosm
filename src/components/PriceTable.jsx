@@ -58,9 +58,9 @@ function PriceTable(props) {
   }, []);
 
   return (
-    <div className="PriceTable Component" id={props.anchor}>
+    <div className="PriceTable Component" id={props.anchor} href={'#' + props.anchor}>
       <div className="title">
-        {!props.title ? (
+        {!props.description ? (
           <div className="label-container">
             <div className="hr"></div>
             <div className="label-components">
@@ -73,7 +73,7 @@ function PriceTable(props) {
             <div className="hr"></div>
             <div className="label-components">
               <h3 className="label">{props.sheetName}</h3>
-            <Tooltip color={"#fa8072"} placement="topLeft" title={props.title} >
+            <Tooltip color={"#fa8072"} placement="topLeft" title={props.description} >
               <InfoCircleFilled style={{fontSize:"1.5em", margin:-10, padding:10}}></InfoCircleFilled>
             </Tooltip>
             </div>
@@ -81,7 +81,7 @@ function PriceTable(props) {
           </div>
         )}
         {props.description && (
-          <span className="description">{props.description}</span>
+          <span className="description">{props.subtitie}</span>
         )}
       </div>
       <Table

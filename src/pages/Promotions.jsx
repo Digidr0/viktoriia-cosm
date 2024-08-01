@@ -1,7 +1,6 @@
 import "./promotions.css";
 import Promotion from "../components/Promotion";
 import data from "..//data/promotions.json";
-
 function Promotions(props) {
   return (
     <div className="Promotions Page">

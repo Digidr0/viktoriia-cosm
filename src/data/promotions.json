@@ -1,9 +1,16 @@
 [
   {
+    "title": "Ботокс подмышечных впадин",
+    "description": "Эта процедура подарит вам комфорт и уверенность на все летние дни! ЗАпишитесь сейчас, и сделайте шаг к идеальному ощущению!",
+    "src": "https://img.freepik.com/free-photo/skin-care-woman-with-beauty-face-touching-healthy-facial-skin-portrait-beautiful-smiling-girl-model-with-natural-makeup-touching-glowing-hydrated-skin-white-wall_176420-34251.jpg?w=512",
+    "newPrice": 14900,
+    "oldPrice": null
+  },
+  {
     "title": "Контурная пластика губ",
     "description": "Увеличение, а так же коррекция губ",
     "src": "https://img.freepik.com/free-photo/woman-applying-lipstick-on-lips-with-brush-closeup_186202-5070.jpg?w=512",
-    "newPrice": 8500,
+    "newPrice": 9500,
     "oldPrice": null
   },
   {

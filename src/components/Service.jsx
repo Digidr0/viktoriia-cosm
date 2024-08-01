@@ -17,11 +17,9 @@ function Service(props) {
           </span>
         </div>
         {props.anchor && (
-          <Link to={"/prices#" + props.anchor}>
-            <button className="accent-btn neu-drop">
+          <Link to={"/prices#" + props.anchor} className="accent-btn neu-drop">
               подробнее
               <MenuUnfoldOutlined />
-            </button>
           </Link>
         )}
       </div>
