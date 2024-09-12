@@ -129,7 +129,7 @@ video {
     width: calc(100% + 2em);
   }
   .promotion-border {
-    line-height: 1.1em;
+    line-height: 1em;
     height: 7.5em;
   }
   .promotion-newPrice {
