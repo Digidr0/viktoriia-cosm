@@ -23,5 +23,9 @@
   .Page {
     padding: 0em 1vw 1em 1vw;
   }
+  .ant-table-cell{
+    /* max-width: calc(100vw / 3); */
+    word-wrap: break-word;
+  }
 
 }
