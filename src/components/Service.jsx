@@ -1,6 +1,5 @@
-import { Space, Image, Button } from "antd";
 import { HashLink as Link } from "react-router-hash-link";
-import "..//pages/Welcome.css";
+import "../pages/welcome.css";
 import { MenuUnfoldOutlined } from "@ant-design/icons";
 
 function Service(props) {

@@ -1,8 +1,8 @@
-import { Button, Descriptions, Divider, Image, Space } from "antd";
+import { Button, Divider, Image, Space } from "antd";
 import Service from "../components/Service";
 import "./welcome.css";
 import portraitImg from "/Portrait-3_bg.jpg";
-import data from "..//data/services.json";
+import data from "../data/services.json";
 
 function Welcome(props) {
   return (

@@ -15,7 +15,7 @@ const items = [
     icon: <UnorderedListOutlined />,
   },
   {
-    label: <Link to={`/promotions`}>Акции</Link>,
+    label: <Link to={`/promotions`}>Новое</Link>,
     key: "/promotions",
     icon: <FireTwoTone twoToneColor="#ffa962"/>,
   },

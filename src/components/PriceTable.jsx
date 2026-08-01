@@ -1,100 +1,124 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Space, Table, Tooltip } from "antd";
-import { v4 as uuidv4 } from "uuid";
-import Showdown from "showdown";
-const converter = new Showdown.Converter();
+import { Table, Tooltip } from "antd";
 import { InfoCircleFilled } from "@ant-design/icons";
-const spreadsheetId = "1OrP_Ud2W2SXYaMMJ6GwYQJ16_m588g8UPQklk6qCxUY";
-const base = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?`;
-const query = encodeURIComponent("Select *");
-// const url = `${base}&sheet=${sheetName}&tq=${query}`;
-////https://docs.google.com/spreadsheets/d/1zdF7StPiiW-jTKGHuIyKtFvjHUcwerMwHCyIrH_HD4c/gviz/tq?tqx=out:csv&gid=1820138425&tq=SELECT+A%2CC%2CD+where+B+contains+%27R%27
+import { useMemo } from "react";
 
-function PriceTable(props) {
-  const [columns, setColumns] = useState("");
-  const [data, setData] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  const getData = new Promise(function (resolve, reject) {
-    axios
-      .get(`${base}&sheet=${props.sheetName}&tq=${query}`)
-      .then((res) => {
-        resolve(res.data);
-      })
-      .catch((err) => reject(err));
-  });
-  function generateTable(rep) {
-    const jsonData = JSON.parse(rep.substring(47).slice(0, -2)).table;
-    setColumns(
-      jsonData.cols.map((el) => {
-        return {
-          title: el.label,
-          dataIndex: el.label.toLowerCase(),
-          key: el.id,
-          fixed: "left",
-        };
-      })
-    );
-    setData(
-      jsonData.rows.map((row) => {
-        let object = {};
-        jsonData.cols.map((el, index) => {
-          object = {
-            ...object,
-            [el.label.toLowerCase()]:
-              row.c[index] != null ? row.c[index].v : null,
-            key: uuidv4(),
-          };
-          // console.log(row.c[index]);
-        });
+function formatPrice(value) {
+  if (value == null || value === "") return "—";
+  const n = Number(value);
+  if (!Number.isFinite(n)) return String(value);
+  return `${n.toLocaleString("ru-RU")} ₽`;
+}
 
-        return object;
-      })
-      );
-  }
+function PriceTable({ name, slug, description, subtitle, services = [] }) {
+  const hasDuration = services.some((s) => s.duration);
+  const hasVolume = services.some((s) => s.volume);
+  const hasDescription = services.some((s) => s.description);
 
-  useEffect(() => {
-    getData.then((result) => generateTable(result)).then(setIsLoading(false));
-  }, []);
+  const columns = useMemo(() => {
+    const cols = [
+      {
+        title: "Процедура",
+        dataIndex: "title",
+        key: "title",
+        render: (text, record) => (
+          <span>
+            {text}
+            {record.description ? (
+              <Tooltip
+                color="#fa8072"
+                placement="topLeft"
+                title={record.description}
+              >
+                <InfoCircleFilled
+                  style={{
+                    fontSize: "1em",
+                    marginLeft: 8,
+                    color: "var(--accent-color)",
+                    cursor: "help",
+                  }}
+                />
+              </Tooltip>
+            ) : null}
+          </span>
+        ),
+      },
+    ];
+
+    if (hasDuration) {
+      cols.push({
+        title: "Время",
+        dataIndex: "duration",
+        key: "duration",
+        width: 100,
+        render: (v) => v || "—",
+      });
+    }
+
+    if (hasVolume) {
+      cols.push({
+        title: "Объём",
+        dataIndex: "volume",
+        key: "volume",
+        width: 100,
+        render: (v) => v || "—",
+      });
+    }
+
+    cols.push({
+      title: "Цена",
+      dataIndex: "price",
+      key: "price",
+      width: 120,
+      align: "right",
+      render: formatPrice,
+    });
+
+    if (hasDescription) {
+      // description shown via tooltip on title; no extra column needed
+    }
+
+    return cols;
+  }, [hasDuration, hasVolume, hasDescription]);
+
+  const dataSource = useMemo(
+    () =>
+      services.map((s) => ({
+        ...s,
+        key: s.id,
+      })),
+    [services]
+  );
 
   return (
-    <div className="PriceTable Component" id={props.anchor} href={'#' + props.anchor}>
+    <div className="PriceTable Component" id={slug}>
       <div className="title">
-        {!props.description ? (
-          <div className="label-container">
-            <div className="hr"></div>
-            <div className="label-components">
-              <h3 className="label">{props.sheetName}</h3>
-            </div>
-            <div className="hr"></div>
+        <div className="label-container">
+          <div className="hr"></div>
+          <div className="label-components">
+            <h3 className="label">{name}</h3>
+            {description ? (
+              <Tooltip color="#fa8072" placement="topLeft" title={description}>
+                <InfoCircleFilled
+                  style={{ fontSize: "1.5em", margin: -10, padding: 10 }}
+                />
+              </Tooltip>
+            ) : null}
           </div>
-        ) : (
-          <div className="label-container">
-            <div className="hr"></div>
-            <div className="label-components">
-              <h3 className="label">{props.sheetName}</h3>
-            <Tooltip color={"#fa8072"} placement="topLeft" title={props.description} >
-              <InfoCircleFilled style={{fontSize:"1.5em", margin:-10, padding:10}}></InfoCircleFilled>
-            </Tooltip>
-            </div>
-            <div className="hr"></div>
-          </div>
-        )}
-        {props.description && (
-          <span className="description">{props.subtitie}</span>
-        )}
+          <div className="hr"></div>
+        </div>
+        {subtitle ? <span className="description">{subtitle}</span> : null}
       </div>
       <Table
         className="Table"
         columns={columns}
-        dataSource={data}
-        loading={isLoading}
-        sticky={columns.length <= 5 ? false : true}
+        dataSource={dataSource}
         pagination={false}
         bordered
         size="small"
+        locale={{ emptyText: "Нет услуг в этой категории" }}
       />
     </div>
   );
 }
+
 export default PriceTable;

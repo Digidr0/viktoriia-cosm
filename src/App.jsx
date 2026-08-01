@@ -41,10 +41,10 @@ function App() {
           <Layout style={{ backgroundColor: "transparent " }}>
             <Header />
             <Routes>
-              <Route path="/welcome" element={<Welcome />}></Route>
-              <Route path="/*" element={<Navigate to="/welcome" />}></Route>
-              <Route path="/prices" element={<Prices />}></Route>
-              <Route path="/promotions" element={<Promotions />}></Route>
+              <Route path="/welcome" element={<Welcome />} />
+              <Route path="/prices" element={<Prices />} />
+              <Route path="/promotions" element={<Promotions />} />
+              <Route path="/*" element={<Navigate to="/welcome" replace />} />
             </Routes>
           </Layout>
         </Router>

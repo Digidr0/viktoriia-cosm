@@ -1,0 +1,2134 @@
+{
+  "categories": [
+    {
+      "name": "Массаж лица",
+      "slug": "massage",
+      "subtitle": null,
+      "description": null,
+      "sort_order": 0,
+      "services": [
+        {
+          "title": "Классический массаж лица",
+          "price": 1500,
+          "duration": "30 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Лимфодренажный массаж лица",
+          "price": 1500,
+          "duration": "30 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Лифтинг массаж",
+          "price": 1500,
+          "duration": "30 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Комбинированный массаж лица",
+          "price": 1500,
+          "duration": "30 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "Массаж лица экспресс",
+          "price": 1000,
+          "duration": "20 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 4
+        }
+      ]
+    },
+    {
+      "name": "Чистка лица",
+      "slug": "clean",
+      "subtitle": null,
+      "description": null,
+      "sort_order": 1,
+      "services": [
+        {
+          "title": "Атравматичная чистка лица жирной кожи",
+          "price": 3500,
+          "duration": "90 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Атравматичная чистка лица сухой/чувствительной кожи",
+          "price": 2900,
+          "duration": "90 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Комбинированная чистка лица",
+          "price": 3500,
+          "duration": "120 м.",
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Ультразвуковая чистка лица",
+          "price": 2500,
+          "duration": "80 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "Механическая чистка лица",
+          "price": 3500,
+          "duration": "90 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 4
+        }
+      ]
+    },
+    {
+      "name": "Брови, ресницы",
+      "slug": "eyes",
+      "subtitle": null,
+      "description": null,
+      "sort_order": 2,
+      "services": [
+        {
+          "title": "Коррекция бровей",
+          "price": 500,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Окраска бровей",
+          "price": 500,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Окраска ресниц",
+          "price": 500,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        }
+      ]
+    },
+    {
+      "name": "Пилинги",
+      "slug": "pilings",
+      "subtitle": null,
+      "description": "Пилинг используется для отшелушивания клеток кожи лица, удаляются мёртвые клетки, благодаря чему кожа становится более гладкой и красивой.",
+      "sort_order": 3,
+      "services": [
+        {
+          "title": "Миндальный пилинг SESDERMA",
+          "price": 4000,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Салициловый пилинг SESDERMA",
+          "price": 4500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Желтый пилинг SESDERMA",
+          "price": 4000,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Азелаиновый пилинг SESDERMA",
+          "price": 5000,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "Пилинг Джесснера",
+          "price": 5000,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 4
+        },
+        {
+          "title": "Гликолевый пилинг SESDERMA",
+          "price": 5000,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 5
+        },
+        {
+          "title": "Молочный пилинг SESDERMA",
+          "price": 5000,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 6
+        },
+        {
+          "title": "Желтый пилинг SESDERMA",
+          "price": 5500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 7
+        },
+        {
+          "title": "PRX-T33",
+          "price": 5500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 8
+        },
+        {
+          "title": "Bio Re Peel",
+          "price": 5500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 9
+        },
+        {
+          "title": "ABR professional (поверхностно-срединный пилинг для жирной кожи)",
+          "price": 5500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 10
+        },
+        {
+          "title": "ABR deep (поверхностный пилинг для всех типов кожи)",
+          "price": 4500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 11
+        },
+        {
+          "title": "ALPHA complex (поверхностный пилинг фруктовые кислоты)",
+          "price": 4000,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 12
+        },
+        {
+          "title": "ABR bio (пилинг для кожи с куперозом)",
+          "price": 4500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 13
+        },
+        {
+          "title": "ABR lifting",
+          "price": 4500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 14
+        },
+        {
+          "title": "ABR forte (лечение акне)",
+          "price": 5000,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 15
+        },
+        {
+          "title": "Hydro-peel(пилинг для сухой кожи) Beautyfarma",
+          "price": 3500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 16
+        },
+        {
+          "title": "Whitening peptide peel(от пигментации,с гиалуроновой кислотой) Beautyfarma",
+          "price": 3900,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 17
+        }
+      ]
+    },
+    {
+      "name": "Уход за кожей",
+      "slug": "skin",
+      "subtitle": null,
+      "description": null,
+      "sort_order": 4,
+      "services": [
+        {
+          "title": "Мезороллер (очищение, скраб, анестезия, сыворотка, мезороллер, маска, крем)",
+          "price": 4900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Карбокситерапия (очищение, скраб, двухкомпонентная маска, сыворотка, массаж, крем)",
+          "price": 4900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Стоун терапия для лица (очищение, скраб, альгинатная маска, сыворотка, массаж камнями, маска)",
+          "price": 4900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Уход по типу кожи(очищение, тонизация, гоммаж, сыворотка, массаж, маска, крем)",
+          "price": 4500,
+          "duration": "90 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "Микротоки(очищение, микротоки, маска, крем)",
+          "price": 2900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 4
+        },
+        {
+          "title": "Микротоки+уход",
+          "price": 4900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 5
+        },
+        {
+          "title": "Микротоки+массаж",
+          "price": 3900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 6
+        },
+        {
+          "title": "Жирная кожа Youtful soothing (очищение, скраб, дезинфицирующий лосьон, маска, массаж 15 минут, крем)",
+          "price": 3900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 7
+        },
+        {
+          "title": "Восстановление сухой кожи Renew formula (очищение, скраб, сыворотка, массаж 15 мин, маска, крем)",
+          "price": 3900,
+          "duration": "70 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 8
+        },
+        {
+          "title": "Увлажнение Vitalise(очищение, скраб, сыворотка, массаж 15 мин, маска, крем)",
+          "price": 3900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 9
+        },
+        {
+          "title": "Лифтинг Derfectime Fiming (очищение, скраб, сыворотка, массаж 15 мин, маска, крем)",
+          "price": 3900,
+          "duration": "30 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 10
+        },
+        {
+          "title": "Питание Lactolan (очищение, скраб, сыворотка, массаж 15 мин, маска, крем)",
+          "price": 3900,
+          "duration": "30 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 11
+        },
+        {
+          "title": "Восстановление Juverlist Mourish (очищение, скраб, сыворотка, массаж 15 мин, маска, крем)",
+          "price": 3900,
+          "duration": "20 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 12
+        },
+        {
+          "title": "Осветление Dermaling Lighting (очищение, скраб, осветляющий тоник, осветляющая сыворотка, массаж, маска, крем)",
+          "price": 3900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 13
+        }
+      ]
+    },
+    {
+      "name": "Уход за лицом",
+      "slug": "skin_holyland",
+      "subtitle": "Holy Land (Израиль)",
+      "description": "Holyland Laboratories является одной из ведущих компаний по разработке и производству профессиональной косметической продукции для ухода за любым типом кожи.",
+      "sort_order": 5,
+      "services": [
+        {
+          "title": "Процедура для жирной кожи Astrigent (очищение,дезинфицирующий тоник,очищающая сыворотка,массаж 10 мин.,маска,крем)",
+          "price": 3900,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Процедура для кожи с покраснениями Calm Derm (очищение,гоммаж,успокаивающий тоник,успокаивающая сыворотка,массаж 10 мин,маска,крем)",
+          "price": 3900,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Процедура с витамином С (очищение,скраб,сыворотка с витамином С,массаж,маска с витамином С,завершающий уход.)",
+          "price": 3900,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Восстанавливающая процедура Bio Repair (очищение,тонизация,пилинг-гоммаж,сыворотка,массаж,маска,крем)",
+          "price": 3900,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "Антикуперозная процедура Calm Derm (очищение,тонизация,пилинг-гоммаж,успокаивающая сыворотка,лимфодренажный массаж, маска,крем)",
+          "price": 3900,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 4
+        },
+        {
+          "title": "Процедура реабилитации после пилинга",
+          "price": 3900,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 5
+        },
+        {
+          "title": "Процедура лифтинг Age Control (очищение,пилинг-гоммаж,омолаживающая сыворотка,лифтинг-массаж,маска,крем)",
+          "price": 3900,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 6
+        },
+        {
+          "title": "Процедура для сухой кожи Phytomide (очищение,пилинг-гоммаж,",
+          "price": 3900,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 7
+        },
+        {
+          "title": "Отбеливающая процедура Whitening очищение,скраб,осветляющая сыворотка,массаж,маска,крем)",
+          "price": 3900,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 8
+        }
+      ]
+    },
+    {
+      "name": "Ботулинотерапия",
+      "slug": "botox",
+      "subtitle": null,
+      "description": "Ботулинотерапия - эффективная косметологическая методика для борьбы с мимическими морщинами. Процедура заключается во введении под кожу препаратов на основе ботулинотоксина, которые точечно воздействуют на причину образования мимических морщин.",
+      "sort_order": 6,
+      "services": [
+        {
+          "title": "Рефайнекс",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Ботулакс",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Kaimax",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Набота",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "PL",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 4
+        },
+        {
+          "title": "Рентокс",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 5
+        },
+        {
+          "title": "Релатокс",
+          "price": 350,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 6
+        },
+        {
+          "title": "Иннотокс",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 7
+        },
+        {
+          "title": "Дексантекс",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 8
+        },
+        {
+          "title": "Метокс",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 9
+        },
+        {
+          "title": "Meditoxin",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 10
+        },
+        {
+          "title": "Liztox",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 11
+        },
+        {
+          "title": "Toxta",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 12
+        },
+        {
+          "title": "Botox",
+          "price": 450,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 13
+        },
+        {
+          "title": "Диспорт",
+          "price": 180,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 14
+        },
+        {
+          "title": "Рефайнекс",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 15
+        },
+        {
+          "title": "Metox",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 16
+        },
+        {
+          "title": "Новакутан БТА",
+          "price": 350,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 17
+        },
+        {
+          "title": "Corentox",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 18
+        },
+        {
+          "title": "Hutox",
+          "price": 300,
+          "duration": null,
+          "volume": "1 ед",
+          "description": null,
+          "sort_order": 19
+        },
+        {
+          "title": "Коррекция(через 2-3 недели)",
+          "price": 1000,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 20
+        }
+      ]
+    },
+    {
+      "name": "Коллагеностимулятор",
+      "slug": "collagen",
+      "subtitle": "Euroresearch s.r.l. (Италия)",
+      "description": "Благодаря воздействию на фибробласты, происходит активная стимуляция выработки большего количества собственного коллагена. В тканях создается прочный и естественный коллагеновый каркас.",
+      "sort_order": 7,
+      "services": [
+        {
+          "title": "Nithya",
+          "price": 11000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Nithya smooth",
+          "price": 7500,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Nithya shield",
+          "price": 7500,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Nithya stimulate",
+          "price": 7500,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "Collost MICRO",
+          "price": 18000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 4
+        },
+        {
+          "title": "Collapro 30+",
+          "price": 8800,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 5
+        },
+        {
+          "title": "Collapro 40+",
+          "price": 9200,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 6
+        },
+        {
+          "title": "Collapro 50+",
+          "price": 9600,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 7
+        },
+        {
+          "title": "Karisma face",
+          "price": 22600,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 8
+        }
+      ]
+    },
+    {
+      "name": "Биоревитализация",
+      "slug": "bionic",
+      "subtitle": null,
+      "description": "Биоревитализация представляет собой внутрикожное введение гиалуроновой кислоты. Процедура способна оказать быстрое омолаживающее действие и справляется со всеми возрастными изменениями.",
+      "sort_order": 8,
+      "services": [
+        {
+          "title": "Filorga NCTF 135 HA",
+          "price": 11900,
+          "duration": null,
+          "volume": "3 мл",
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Мезоксантин",
+          "price": 12500,
+          "duration": null,
+          "volume": "1,5 мл",
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Мезовартон",
+          "price": 12500,
+          "duration": null,
+          "volume": "1,5 мл",
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Karisma",
+          "price": 19900,
+          "duration": null,
+          "volume": "2 мл",
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "Novacutan",
+          "price": 13400,
+          "duration": null,
+          "volume": "1,5 мл",
+          "description": null,
+          "sort_order": 4
+        },
+        {
+          "title": "Beautelle 30+ (гиалуроновая кислота 10%) для молодой кожи и области вокруг глаз",
+          "price": 10500,
+          "duration": null,
+          "volume": "2 мл",
+          "description": null,
+          "sort_order": 5
+        },
+        {
+          "title": "Beautelle 40+ (гиалуроновая кислота 15%)",
+          "price": 11500,
+          "duration": null,
+          "volume": "2 мл",
+          "description": null,
+          "sort_order": 6
+        },
+        {
+          "title": "Beautelle Age+ (гиалуроновая кислота 20%)",
+          "price": 12500,
+          "duration": null,
+          "volume": "2 мл",
+          "description": null,
+          "sort_order": 7
+        },
+        {
+          "title": "Beautyfarma HyalAmin (гиалуроновая кислота и аминокислоты)",
+          "price": 6500,
+          "duration": null,
+          "volume": "3 мл",
+          "description": null,
+          "sort_order": 8
+        },
+        {
+          "title": "Beautyfarma Hyal (гиалуроновая кислота 3%)",
+          "price": 7500,
+          "duration": null,
+          "volume": "3 мл",
+          "description": null,
+          "sort_order": 9
+        },
+        {
+          "title": "Fusion - HA (гиалуроновая кислота 2%) Испания",
+          "price": 5000,
+          "duration": null,
+          "volume": "3 мл",
+          "description": null,
+          "sort_order": 10
+        },
+        {
+          "title": "Hyaron (гиалуроновая кислота 10%) Корея",
+          "price": 4900,
+          "duration": null,
+          "volume": "2,5 мл",
+          "description": null,
+          "sort_order": 11
+        },
+        {
+          "title": "Gemvous (гиалуроновая кислота 20% + полинуклеотиды + ниацинамид) корея",
+          "price": 4900,
+          "duration": null,
+          "volume": "2,5 мл",
+          "description": null,
+          "sort_order": 12
+        },
+        {
+          "title": "Profhilo (гиалуроновая кислота 32%) Италия",
+          "price": 18000,
+          "duration": null,
+          "volume": "2 мл",
+          "description": null,
+          "sort_order": 13
+        },
+        {
+          "title": "Neauvia Mydro Deluxe (гиалуроновая кислота 18% + кальций) Италия",
+          "price": 8700,
+          "duration": null,
+          "volume": "2,5 мл",
+          "description": null,
+          "sort_order": 14
+        },
+        {
+          "title": "Aquashine",
+          "price": 6800,
+          "duration": null,
+          "volume": "2 мл",
+          "description": null,
+          "sort_order": 15
+        },
+        {
+          "title": "Мезоай",
+          "price": 11600,
+          "duration": null,
+          "volume": "1,5 мл",
+          "description": null,
+          "sort_order": 16
+        },
+        {
+          "title": "Teosyal Redensity 1",
+          "price": 15000,
+          "duration": null,
+          "volume": "3 мл",
+          "description": null,
+          "sort_order": 17
+        },
+        {
+          "title": "Revi strong",
+          "price": 15500,
+          "duration": null,
+          "volume": "2 мл",
+          "description": null,
+          "sort_order": 18
+        },
+        {
+          "title": "Revi silk",
+          "price": 14000,
+          "duration": null,
+          "volume": "2 мл",
+          "description": null,
+          "sort_order": 19
+        },
+        {
+          "title": "Revi style",
+          "price": 11800,
+          "duration": null,
+          "volume": "2 мл",
+          "description": null,
+          "sort_order": 20
+        }
+      ]
+    },
+    {
+      "name": "Мезотерапия тело",
+      "slug": "mezo_t",
+      "subtitle": null,
+      "description": "Мезотерапия тела — это современная косметологическая процедура, которая улучшает состояние кожи и корректирует фигуру.",
+      "sort_order": 9,
+      "services": [
+        {
+          "title": "Lipo lab",
+          "price": 3500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Dr.Lipo",
+          "price": 3500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Slim X Body",
+          "price": 3500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Lipo Lab V line",
+          "price": 3500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "V Line Sol Super",
+          "price": 3500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 4
+        },
+        {
+          "title": "Yellow Shot",
+          "price": 3500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 5
+        },
+        {
+          "title": "Aqvalix",
+          "price": 6500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 6
+        },
+        {
+          "title": "Bio Gel стройность+the star",
+          "price": 15000,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 7
+        },
+        {
+          "title": "Dermaheal LL",
+          "price": 3500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 8
+        },
+        {
+          "title": "Lumos VS Fat",
+          "price": 3500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 9
+        },
+        {
+          "title": "Bio Gel стройность+Gold+White",
+          "price": 15000,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 10
+        },
+        {
+          "title": "Alidya",
+          "price": 6900,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 11
+        },
+        {
+          "title": "iREJU Lipo Body",
+          "price": 3500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 12
+        },
+        {
+          "title": "Lemonbottle for face and body",
+          "price": 7000,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 13
+        },
+        {
+          "title": "Триада",
+          "price": 6500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 14
+        },
+        {
+          "title": "Tesoro body",
+          "price": 15000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 15
+        },
+        {
+          "title": "Devine",
+          "price": 17500,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 16
+        },
+        {
+          "title": "B-esta HA Filler 50 мл",
+          "price": 22000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 17
+        },
+        {
+          "title": "B-esta HA Filler 10 мл",
+          "price": 12500,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 18
+        },
+        {
+          "title": "Laennek",
+          "price": 4000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 19
+        },
+        {
+          "title": "Melsmon",
+          "price": 3900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 20
+        },
+        {
+          "title": "Beautyfarma gialamin",
+          "price": 6500,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 21
+        }
+      ]
+    },
+    {
+      "name": "Мезотерапия Dermaheal",
+      "slug": "mezo_d",
+      "subtitle": "Dermaheall (Корея)",
+      "description": "Dermaheal – бренд профессиональной косметики от производителя из Южной Кореи Caregen Со. Ltd. Филлеры от компании прошли многократные проверки и допущены к использованию на территории европейских стран и России.",
+      "sort_order": 10,
+      "services": [
+        {
+          "title": "Dermaheall LL (липолитик + аминокислоты)",
+          "price": 4900,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Dermaheal HL (для роста волос)",
+          "price": 4900,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Dermaheal SB (лечение пигментации)",
+          "price": 4900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Dermaheal SR (регенирация для нормальной и жирной кожи)",
+          "price": 4900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "Dermaheal HSR (восстановление сухой и обезвоженной кожи)",
+          "price": 4900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 4
+        },
+        {
+          "title": "Dermaheal DARK (от темных кругов под глазами)",
+          "price": 4900,
+          "duration": "35 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 5
+        },
+        {
+          "title": "Dermaheal Eyebag (от мешков под глазами)",
+          "price": 4900,
+          "duration": "35 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 6
+        }
+      ]
+    },
+    {
+      "name": "Мезотерапия Fusion",
+      "slug": "mezo_f",
+      "subtitle": "Fusion (Испания)",
+      "description": "Fusion Meso - это многонациональная компания, специализирующаяся на разработке, производстве и коммерциализации эстетической медицины для ухода за кожей, косметики и медицинских приборов для врачей, дерматологов и специалистов в области красоты.",
+      "sort_order": 11,
+      "services": [
+        {
+          "title": "F-SILORG (органический кремний)",
+          "price": 3900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "F-XFC (пептидный коктель для комплексного омоложения 30+)",
+          "price": 5000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "F-XFC FACE (антивозрастной коктель с лифтинг эффектом)",
+          "price": 5000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "F-XFC+ (полиревитализирующий пептидный коктель)",
+          "price": 7000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "F-XFC FACE (антивозрастной пептидный коктель 40+)",
+          "price": 7500,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 4
+        },
+        {
+          "title": "F-HYDRALIX (пептидный коктель для интенсивного увлажнения)",
+          "price": 6500,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 5
+        },
+        {
+          "title": "F-DMAE (3% диметиламиноэтанол)",
+          "price": 3900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 6
+        },
+        {
+          "title": "F-SLIMLIFT (коктель для уменьшения локальных жировых отложений н лице)",
+          "price": 3950,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 7
+        },
+        {
+          "title": "F-GLOWLIFT (коктель для устранения пигментации и лифтинга кожи)",
+          "price": 9000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 8
+        },
+        {
+          "title": "F-HA ULTRA (коктель для интенсивного увлажнения)",
+          "price": 4700,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 9
+        },
+        {
+          "title": "F-MELACLEAR (коктель для локального устранения пигментых пятен)",
+          "price": 5500,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 10
+        },
+        {
+          "title": "F-EYE CONTOUR (пептидный коктель для области вокруг глаз)",
+          "price": 3500,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 11
+        },
+        {
+          "title": "F-RADIANCE (пептидный коктель для борьбы с пигментацией)",
+          "price": 5000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 12
+        },
+        {
+          "title": "F-ACN (пептидный коктель для борьбы с акне)",
+          "price": 3550,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 13
+        },
+        {
+          "title": "F-PERFECT LIPS (пептидный коктель для объема и контуров губ)",
+          "price": 3900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 14
+        },
+        {
+          "title": "F-COUPERIX (коктель для купероза)",
+          "price": 5000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 15
+        },
+        {
+          "title": "F-MESOMATRIX (пептидный комплекс для восстановления и обновления)",
+          "price": 5000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 16
+        },
+        {
+          "title": "F-BTX (пептидный коктель с эффектом ботокса - мезоботокс)",
+          "price": 5000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 17
+        }
+      ]
+    },
+    {
+      "name": "Мезотерапия Beautyfarma",
+      "slug": "mezo_b",
+      "subtitle": "Beautyfarma (Франция)",
+      "description": "Компания-производитель BeautyPharmaCo была сформирована в 2008 году в Париже и вскоре стала огромным дистрибьютором и партнером большинства известных европейских производителей.",
+      "sort_order": 12,
+      "services": [
+        {
+          "title": "BEAUTYPHARMA HYAL-AMIN (гиалуроновая кислота + аминокислоты)",
+          "price": 6500,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "BEAUTYPHARMA LIFT (ДМАЕ + витамины+ олигоэлементы)",
+          "price": 5000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "BEAUTYPHARMA SLIM CONTROL (дренажный эффект - уменьшение обьемов)",
+          "price": 4500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "BEAUTYPHARMA HYAL (гиалуроновая кислота 3%)",
+          "price": 7000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "Beautyfarma slim active (уменьшение объемов плюс подтяжка)",
+          "price": 4500,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 4
+        }
+      ]
+    },
+    {
+      "name": "Филлеры",
+      "slug": "fillers",
+      "subtitle": "Конурная пластика",
+      "description": "В косметологии филлеры используются как инструмент контурной пластики ‒ исправление формы подбородка, носа, губ и т. д., и в антивозрастной терапии ‒ для устранения морщин и складок.",
+      "sort_order": 13,
+      "services": [
+        {
+          "title": "DR.SUJ HAIR",
+          "price": 6600,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Dermalax Implant",
+          "price": 9800,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Dermalax Deep",
+          "price": 9800,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Juvederm Ultra 3",
+          "price": 19000,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "Juvederm Ultra 4",
+          "price": 17800,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 4
+        },
+        {
+          "title": "Juvederm Ultra Smile",
+          "price": 15000,
+          "duration": null,
+          "volume": "0.55 мл",
+          "description": null,
+          "sort_order": 5
+        },
+        {
+          "title": "Juvederm Voluma",
+          "price": 20500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 6
+        },
+        {
+          "title": "Juvederm Volift",
+          "price": 20500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 7
+        },
+        {
+          "title": "Juvederm Volite",
+          "price": 19000,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 8
+        },
+        {
+          "title": "Juvederm Volbella",
+          "price": 20500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 9
+        },
+        {
+          "title": "Neauvia Stimulate",
+          "price": 13900,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 10
+        },
+        {
+          "title": "Neauvia Intense",
+          "price": 13900,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 11
+        },
+        {
+          "title": "Neauvia Intense Lips",
+          "price": 13900,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 12
+        },
+        {
+          "title": "Neauvia Intense LV",
+          "price": 13900,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 13
+        },
+        {
+          "title": "Vimedica deep",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 14
+        },
+        {
+          "title": "Princess Filler",
+          "price": 10400,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 15
+        },
+        {
+          "title": "Princess Volume",
+          "price": 10600,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 16
+        },
+        {
+          "title": "Revolax Fine",
+          "price": 7500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 17
+        },
+        {
+          "title": "Revolax Deep",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 18
+        },
+        {
+          "title": "Revolax Sab-Q",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 19
+        },
+        {
+          "title": "Sardenia Fine",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 20
+        },
+        {
+          "title": "Sardenia Deep",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 21
+        },
+        {
+          "title": "Sardenia Shape",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 22
+        },
+        {
+          "title": "Sardenia Implant",
+          "price": 9500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 23
+        },
+        {
+          "title": "Stylage Special Lips",
+          "price": 13800,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 24
+        },
+        {
+          "title": "Stylage S",
+          "price": 11100,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 25
+        },
+        {
+          "title": "Stylage M",
+          "price": 12900,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 26
+        },
+        {
+          "title": "Stylage L",
+          "price": 13500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 27
+        },
+        {
+          "title": "Stylage Xl",
+          "price": 15900,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 28
+        },
+        {
+          "title": "Tesoro Implant",
+          "price": 9500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 29
+        },
+        {
+          "title": "Tesoro Sab-Q",
+          "price": 9500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 30
+        },
+        {
+          "title": "Tesoro Deep",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 31
+        },
+        {
+          "title": "Tesoro Fine",
+          "price": 7500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 32
+        },
+        {
+          "title": "Neuramis Deep",
+          "price": 10000,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 33
+        },
+        {
+          "title": "Neuramis Volume",
+          "price": 10000,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 34
+        },
+        {
+          "title": "Vimedica fine",
+          "price": 7500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 35
+        },
+        {
+          "title": "Vimedica shape",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 36
+        },
+        {
+          "title": "Sosum S",
+          "price": 7500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 37
+        },
+        {
+          "title": "Sosum M",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 38
+        },
+        {
+          "title": "Sosum H",
+          "price": 9500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 39
+        },
+        {
+          "title": "Medeyra fine",
+          "price": 7500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 40
+        },
+        {
+          "title": "Medeyra deep",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 41
+        },
+        {
+          "title": "Medeyra shape",
+          "price": 9500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 42
+        },
+        {
+          "title": "Celosome soft",
+          "price": 7500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 43
+        },
+        {
+          "title": "Celosome mid",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 44
+        },
+        {
+          "title": "Celosome strong",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 45
+        },
+        {
+          "title": "Celosome implant",
+          "price": 9500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 46
+        },
+        {
+          "title": "Elasty F",
+          "price": 7500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 47
+        },
+        {
+          "title": "Elasty D",
+          "price": 8500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 48
+        },
+        {
+          "title": "Elasty G",
+          "price": 9500,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 49
+        },
+        {
+          "title": "The Jur Kiss",
+          "price": 10900,
+          "duration": null,
+          "volume": "1,1 мл",
+          "description": null,
+          "sort_order": 50
+        },
+        {
+          "title": "Richesse Red Volume",
+          "price": 11000,
+          "duration": null,
+          "volume": "1,1 мл",
+          "description": null,
+          "sort_order": 51
+        },
+        {
+          "title": "Hyamax extra deep",
+          "price": 12000,
+          "duration": null,
+          "volume": "2 мл",
+          "description": null,
+          "sort_order": 52
+        },
+        {
+          "title": "Hyamax lips",
+          "price": 10000,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 53
+        },
+        {
+          "title": "Hyamax volumizer",
+          "price": 10000,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 54
+        },
+        {
+          "title": "Hyamax huavital",
+          "price": 12000,
+          "duration": null,
+          "volume": "2 мл",
+          "description": null,
+          "sort_order": 55
+        },
+        {
+          "title": "Neauvia stimulate",
+          "price": 14900,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 56
+        },
+        {
+          "title": "Neauvia intense",
+          "price": 14900,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 57
+        },
+        {
+          "title": "Neauvia intense lips",
+          "price": 14900,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 58
+        },
+        {
+          "title": "Neauvia FLUX",
+          "price": 14900,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 59
+        },
+        {
+          "title": "Neauvia intense LV",
+          "price": 14900,
+          "duration": null,
+          "volume": "1 мл",
+          "description": null,
+          "sort_order": 60
+        },
+        {
+          "title": "Коррекция",
+          "price": 1000,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 61
+        }
+      ]
+    },
+    {
+      "name": "Инъекции",
+      "slug": "inject",
+      "subtitle": null,
+      "description": null,
+      "sort_order": 14,
+      "services": [
+        {
+          "title": "Radiesse",
+          "price": 22000,
+          "duration": null,
+          "volume": "1,5 мл",
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Radiesse",
+          "price": 30000,
+          "duration": null,
+          "volume": "3 мл",
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Nithya",
+          "price": 13000,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        }
+      ]
+    },
+    {
+      "name": "Жидкие нити",
+      "slug": "liquid_strings",
+      "subtitle": null,
+      "description": "Жидкие нити — одно из новых решений эстетической медицины, помогающее восстановить упругость и эластичность кожи, разгладить морщины, а также подтянуть утратившие тонус ткани.",
+      "sort_order": 15,
+      "services": [
+        {
+          "title": "AESTHEFILL",
+          "price": 29900,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "JUVE EYES",
+          "price": 7500,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Sculptra",
+          "price": 30000,
+          "duration": "60 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        }
+      ]
+    },
+    {
+      "name": "Прокол ушей",
+      "slug": "ears",
+      "subtitle": null,
+      "description": null,
+      "sort_order": 16,
+      "services": [
+        {
+          "title": "Прокол одного уха",
+          "price": 500,
+          "duration": "20 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Прокол двух ушей",
+          "price": 900,
+          "duration": "30 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Сережки (медецинский металл)",
+          "price": 500,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Сережки (медецинский металл) 2шт",
+          "price": 900,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        }
+      ]
+    },
+    {
+      "name": "Депиляция",
+      "slug": "depelation",
+      "subtitle": "на основе высококачественного воска ItalWax",
+      "description": null,
+      "sort_order": 17,
+      "services": [
+        {
+          "title": "Ноги (до колена)",
+          "price": 650,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        },
+        {
+          "title": "Ноги (полностью)",
+          "price": 1200,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 1
+        },
+        {
+          "title": "Руки (до локтя)",
+          "price": 400,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 2
+        },
+        {
+          "title": "Руки (полностью)",
+          "price": 600,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 3
+        },
+        {
+          "title": "Подмышки",
+          "price": 400,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 4
+        },
+        {
+          "title": "Усики",
+          "price": 350,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 5
+        },
+        {
+          "title": "Среднее бикини",
+          "price": 1300,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 6
+        },
+        {
+          "title": "Глубокое бикини",
+          "price": 1500,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 7
+        },
+        {
+          "title": "Лицо",
+          "price": 500,
+          "duration": null,
+          "volume": null,
+          "description": null,
+          "sort_order": 8
+        }
+      ]
+    },
+    {
+      "name": "Дополнительные процедуры",
+      "slug": "external",
+      "subtitle": null,
+      "description": null,
+      "sort_order": 18,
+      "services": [
+        {
+          "title": "Микротоковая терапия (очищение, тонизация, маска, Микротоки, крем)",
+          "price": 2900,
+          "duration": "45 мин",
+          "volume": null,
+          "description": null,
+          "sort_order": 0
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "title": "Ботокс подмышечных впадин",
+      "description": "Процедура подарит вам комфорт на все дни!",
+      "image_url": "https://img.freepik.com/free-photo/skin-care-woman-with-beauty-face-touching-healthy-facial-skin-portrait-beautiful-smiling-girl-model-with-natural-makeup-touching-glowing-hydrated-skin-white-wall_176420-34251.jpg?w=512",
+      "new_price": 14900,
+      "old_price": null,
+      "is_active": true,
+      "sort_order": 0
+    },
+    {
+      "title": "Контурная пластика губ",
+      "description": "Увеличение, а так же коррекция губ",
+      "image_url": "https://img.freepik.com/free-photo/woman-applying-lipstick-on-lips-with-brush-closeup_186202-5070.jpg?w=512",
+      "new_price": 9500,
+      "old_price": null,
+      "is_active": true,
+      "sort_order": 1
+    },
+    {
+      "title": "Маска в подарок к любой процедуре",
+      "description": "Маска в подарок при покупке к любой процедуре",
+      "image_url": "https://img.freepik.com/free-photo/close-up-portrait-of-beautiful-young-woman-smiling-with-towels-after-take-bath-make-cosmetic-mask-on-her-face_197531-3400.jpg?w=512",
+      "new_price": 0,
+      "old_price": 750,
+      "is_active": true,
+      "sort_order": 2
+    },
+    {
+      "title": "Миндальный пилинг",
+      "description": "Пилинг для лица с миндальной (гидрокси-фенилгликолевой) кислотой",
+      "image_url": "https://img.freepik.com/free-photo/cosmetologist-doing-face-treatment-and-applying-face-mask_1303-28042.jpg?w=512",
+      "new_price": 2500,
+      "old_price": 3100,
+      "is_active": true,
+      "sort_order": 3
+    },
+    {
+      "title": "Биоревитализация",
+      "description": "Процедура способна оказать быстрое омолаживающее действие",
+      "image_url": "https://img.freepik.com/free-photo/hand-with-latex-glove-holding-vaccine-syringe_23-2149014339.jpg?w=512",
+      "new_price": 4500,
+      "old_price": null,
+      "is_active": true,
+      "sort_order": 4
+    }
+  ]
+}
