@@ -1,0 +1,138 @@
+.AdminPage {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #fff7f5 0%, #f3f4f6 45%, #ffffff 100%);
+  padding: 0;
+  text-align: left;
+}
+
+.admin-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.admin-topbar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #3a3a3a;
+}
+
+.admin-topbar .meta {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.admin-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(250, 128, 114, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(250, 128, 114, 0.12);
+  padding: 1rem 1.1rem 1.25rem;
+}
+
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.admin-toolbar .left,
+.admin-toolbar .right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.admin-login-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(160deg, #fff7f5 0%, #f3f4f6 45%, #ffffff 100%);
+}
+
+.admin-login-card {
+  width: min(420px, 100%);
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem 1.5rem 1.75rem;
+  box-shadow: 0 16px 40px rgba(250, 128, 114, 0.12);
+  border: 1px solid rgba(250, 128, 114, 0.15);
+  text-align: left;
+}
+
+.admin-login-card h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.6rem;
+  color: #3a3a3a;
+}
+
+.admin-login-card .subtitle {
+  margin: 0 0 1.5rem;
+  opacity: 0.7;
+}
+
+.admin-login-card .ant-btn-primary {
+  width: 100%;
+  height: 42px;
+  border-radius: 10px;
+}
+
+.updated-cell {
+  white-space: nowrap;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.admin-desc {
+  max-width: 320px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  opacity: 0.8;
+}
+
+.admin-tabs .ant-tabs-nav {
+  margin-bottom: 1rem !important;
+}
+
+.admin-cat-mobile {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .admin-shell {
+    padding: 0.85rem 0.65rem 2rem;
+  }
+
+  .admin-card {
+    padding: 0.85rem;
+    border-radius: 12px;
+  }
+
+  .admin-topbar h1 {
+    font-size: 1.25rem;
+  }
+
+  .admin-login-card {
+    padding: 1.5rem 1.1rem;
+  }
+
+  .admin-cat-mobile {
+    display: block;
+  }
+}

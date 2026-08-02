@@ -12,7 +12,6 @@ function formatPrice(value) {
 function PriceTable({ name, slug, description, subtitle, services = [] }) {
   const hasDuration = services.some((s) => s.duration);
   const hasVolume = services.some((s) => s.volume);
-  const hasDescription = services.some((s) => s.description);
 
   const columns = useMemo(() => {
     const cols = [
@@ -21,25 +20,12 @@ function PriceTable({ name, slug, description, subtitle, services = [] }) {
         dataIndex: "title",
         key: "title",
         render: (text, record) => (
-          <span>
-            {text}
+          <div className="service-cell">
+            <span className="service-title">{text}</span>
             {record.description ? (
-              <Tooltip
-                color="#fa8072"
-                placement="topLeft"
-                title={record.description}
-              >
-                <InfoCircleFilled
-                  style={{
-                    fontSize: "1em",
-                    marginLeft: 8,
-                    color: "var(--accent-color)",
-                    cursor: "help",
-                  }}
-                />
-              </Tooltip>
+              <div className="service-description">{record.description}</div>
             ) : null}
-          </span>
+          </div>
         ),
       },
     ];
@@ -73,12 +59,8 @@ function PriceTable({ name, slug, description, subtitle, services = [] }) {
       render: formatPrice,
     });
 
-    if (hasDescription) {
-      // description shown via tooltip on title; no extra column needed
-    }
-
     return cols;
-  }, [hasDuration, hasVolume, hasDescription]);
+  }, [hasDuration, hasVolume]);
 
   const dataSource = useMemo(
     () =>

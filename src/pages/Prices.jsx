@@ -134,16 +134,11 @@ function Prices() {
         direction="vertical"
       >
         <div>
-          ( Цены на
+          Цены на
           {` ${new Date().toLocaleString("ru", { month: "long" })}
            ${new Date().getFullYear()}`}{" "}
-          )
+
         </div>
-        {lastUpdated ? (
-          <div className="prices-updated">
-            Обновлено: {formatUpdatedAt(lastUpdated)}
-          </div>
-        ) : null}
       </Space>
 
       <div>
