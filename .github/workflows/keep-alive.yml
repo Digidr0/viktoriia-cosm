@@ -1,0 +1,15 @@
+name: Keep Supabase alive
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST API
+        run: curl -sf "${{ secrets.SUPABASE_URL }}/rest/v1/" -o /dev/null || exit 1
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
