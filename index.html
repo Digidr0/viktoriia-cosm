@@ -16,6 +16,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#fa8072">
   <title>Виктория — ваш косметолог</title>
+  <!-- Critical loader styles: visible before the application bundle arrives. -->
+  <style>
+    body { margin: 0; }
+    .startup-screen {
+      box-sizing: border-box;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 24px;
+      background: #edeeee;
+      color: #505050;
+      font: 14px/1.5 system-ui, sans-serif;
+      text-align: center;
+    }
+    .startup-screen p { margin: 0; max-width: 32em; }
+    .startup-dots {
+      position: relative;
+      display: block;
+      width: 40px;
+      height: 40px;
+      transform: rotate(45deg);
+      color: #fa8072;
+    }
+    .startup-dots i {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.6;
+    }
+    .startup-dots i:nth-child(1) { inset: 0 auto auto 0; }
+    .startup-dots i:nth-child(2) { inset: 0 0 auto auto; animation-delay: 0.3s; }
+    .startup-dots i:nth-child(3) { inset: auto 0 0 auto; animation-delay: 0.6s; }
+    .startup-dots i:nth-child(4) { inset: auto auto 0 0; animation-delay: 0.9s; }
+    .startup-retry {
+      padding: 9px 16px;
+      border: 1px solid #b8b8b8;
+      border-radius: 10px;
+      background: #fff;
+      color: #505050;
+      font: inherit;
+      cursor: pointer;
+    }
+    .startup-retry:focus-visible { outline: 2px solid #a6372c; outline-offset: 3px; }
+    @media (prefers-reduced-motion: no-preference) {
+      .startup-dots { animation: startup-rotate 1.2s linear infinite; }
+      .startup-dots i { animation: startup-pulse 1.2s ease-in-out infinite alternate; }
+    }
+    .startup-screen[data-state="error"] .startup-dots,
+    .startup-screen[data-state="error"] .startup-dots i { animation: none; }
+    @keyframes startup-rotate { to { transform: rotate(405deg); } }
+    @keyframes startup-pulse { from { opacity: 0.3; } to { opacity: 1; } }
+  </style>
   <script>
     // Restore clean URLs redirected by GitHub Pages' static 404 page.
     (function () {
@@ -30,8 +88,8 @@
       }
     })();
   </script>
-  <script type="module" crossorigin src="/viktoriia-cosm/assets/index-CAtFPMtg.js"></script>
-  <link rel="stylesheet" crossorigin href="/viktoriia-cosm/assets/index-CvOZ9hxY.css">
+  <script type="module" crossorigin src="/viktoriia-cosm/assets/index-B2XcGSHC.js"></script>
+  <link rel="stylesheet" crossorigin href="/viktoriia-cosm/assets/index-BL0bcl4R.css">
 </head>
 
 <body>
@@ -51,7 +109,59 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/95902778" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-  <div id="root"></div>
+  <div id="root">
+    <div id="startup-screen" class="startup-screen" role="status" aria-live="polite" aria-atomic="true">
+      <span id="startup-dots" class="startup-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <p id="startup-message">Загружаем сайт…</p>
+      <button id="startup-retry" class="startup-retry" type="button" hidden>Обновить страницу</button>
+      <noscript>
+        <style>#startup-dots, #startup-message { display: none; }</style>
+        <p>Для работы сайта включите JavaScript в браузере.</p>
+      </noscript>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var screen = document.getElementById("startup-screen");
+      var message = document.getElementById("startup-message");
+      var retry = document.getElementById("startup-retry");
+      function showError(text) {
+        if (!screen.isConnected) return;
+        screen.dataset.state = "error";
+        message.textContent = text;
+        retry.hidden = false;
+      }
+      function offline() { showError("Нет соединения с интернетом. Подключитесь к сети и обновите страницу."); }
+      function online() {
+        if (screen.dataset.state === "error") showError("Сеть доступна. Попробуйте обновить страницу.");
+      }
+      function failed(event) {
+        if (event.target && event.target.hasAttribute && event.target.hasAttribute("data-app-entry")) {
+          showError("Не удалось загрузить сайт. Проверьте соединение и обновите страницу.");
+        }
+      }
+      function reload() { window.location.reload(); }
+      retry.addEventListener("click", reload);
+      window.addEventListener("offline", offline);
+      window.addEventListener("online", online);
+      window.addEventListener("error", failed, true);
+      var timer = setTimeout(function () {
+        showError("Загрузка занимает больше времени, чем обычно. Проверьте соединение или обновите страницу.");
+      }, 15000);
+      // React replaces this fallback on its first render. No artificial delay.
+      var observer = new MutationObserver(function () {
+        if (screen.isConnected) return;
+        clearTimeout(timer);
+        retry.removeEventListener("click", reload);
+        window.removeEventListener("offline", offline);
+        window.removeEventListener("online", online);
+        window.removeEventListener("error", failed, true);
+        observer.disconnect();
+      });
+      observer.observe(document.getElementById("root"), { childList: true });
+      if (!navigator.onLine) offline();
+    })();
+  </script>
 </body>
 
 </html>
