@@ -12,7 +12,7 @@ export async function listCategories() {
 
 export async function listServices() {
   return (await requestData(
-    supabase.from("services").select(serviceFields).order("sort_order", { ascending: true })
+    supabase.from("services").select(serviceFields).order("sort_order", { ascending: true }).order("id", { ascending: true })
   )) || [];
 }
 
@@ -39,4 +39,12 @@ export function saveService(id, payload) {
 
 export function deleteService(id) {
   return requestData(supabase.from("services").delete().eq("id", id));
+}
+
+// Stop at the first failure. Never retry uncertain writes automatically.
+// Existing REST API has no batch transaction: the caller must reload on failure.
+export async function saveServiceOrder(changes) {
+  for (const row of changes) {
+    await saveService(row.id, { sort_order: row.sort_order });
+  }
 }

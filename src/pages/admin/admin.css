@@ -167,3 +167,16 @@
     display: block;
   }
 }
+.service-reorder-controls {
+  display: flex;
+  align-items: center;
+}
+.service-drag-handle:not(:disabled) {
+  cursor: grab;
+  touch-action: none;
+}
+.service-drag-handle:active:not(:disabled) { cursor: grabbing; }
+.admin-reorder-hint { font-size: 13px; color: var(--clr); }
+@media (prefers-reduced-motion: reduce) {
+  .ant-table-row { transition: none !important; }
+}

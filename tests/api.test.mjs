@@ -72,6 +72,15 @@ test("catalog loads both tables in sort order", async () => {
   }
 });
 
+test("service order updates only ranks and stops on the first failed write without retry", async () => {
+  let attempts = 0;
+  const client = mockClient(() => ++attempts === 2 ? { error: new Error("Write failed") } : { data: null });
+  const api = await loadApi("catalog", client);
+  await assert.rejects(api.saveServiceOrder([{ id: 3, sort_order: 0 }, { id: 1, sort_order: 1 }, { id: 2, sort_order: 2 }]), /Write failed/);
+  assert.equal(client.calls.length, 2);
+  assert.deepEqual(JSON.parse(JSON.stringify(client.calls[0].steps)), [["update", { sort_order: 0 }], ["eq", "id", 3]]);
+});
+
 test("catalog handles empty data and propagates request errors", async () => {
   const emptyApi = await loadApi("catalog", mockClient({ data: null }));
   assert.equal((await emptyApi.listCategories()).length, 0);
