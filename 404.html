@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <title>Переход на сайт</title>
+    <script>
+      // GitHub Pages cannot rewrite SPA routes to index.html on the server.
+      var base = "/viktoriia-cosm/";
+      var route = window.location.pathname + window.location.search + window.location.hash;
+      window.location.replace(base + "?__gh_pages_redirect=" + encodeURIComponent(route));
+    </script>
+  </head>
+  <body>
+    <a href="/viktoriia-cosm/">Перейти на главную</a>
+  </body>
+</html>

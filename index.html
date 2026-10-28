@@ -9,15 +9,29 @@
   <meta property="og:title" content="Виктория - ваш личный косметолог" />
   <meta property="og:description" content="Здесь вы можете узнать цены на процедуры и записаться на прием." />
   <meta property="og:image"
-    content="https://github.com/Digidr0/viktoriia-cosm/blob/master/public/Portrait-3_bg.jpg?raw=true" />
+    content="https://digidr0.github.io/viktoriia-cosm/Portrait-3_bg.jpg" />
   <!-- og end -->
 
-  <link rel="icon" type="image/svg+xml" href="./facial-treatment.png" />
+  <link rel="icon" type="image/png" href="/viktoriia-cosm/facial-treatment.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#fa8072">
   <title>Виктория — ваш косметолог</title>
-  <script type="module" crossorigin src="./assets/index-du7RA3pQ.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-CvOZ9hxY.css">
+  <script>
+    // Restore clean URLs redirected by GitHub Pages' static 404 page.
+    (function () {
+      var base = "/viktoriia-cosm/";
+      var redirect = new URLSearchParams(window.location.search).get("__gh_pages_redirect");
+      if (redirect && redirect.startsWith(base)) {
+        window.history.replaceState(null, "", redirect);
+      }
+      // Keep previously shared HashRouter links working.
+      if (window.location.hash.startsWith("#/")) {
+        window.history.replaceState(null, "", base + window.location.hash.slice(2));
+      }
+    })();
+  </script>
+  <script type="module" crossorigin src="/viktoriia-cosm/assets/index-ukmAC3hI.js"></script>
+  <link rel="stylesheet" crossorigin href="/viktoriia-cosm/assets/index-CvOZ9hxY.css">
 </head>
 
 <body>
