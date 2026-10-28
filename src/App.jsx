@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
   Navigate,
-  HashRouter as Router,
+  BrowserRouter as Router,
   useLocation,
 } from "react-router-dom";
 import Header from "./components/Header";
@@ -13,15 +13,26 @@ import Promotions from "./pages/Promotions";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import { AuthProvider } from "./context/AuthContext";
-import { ConfigProvider, Layout, FloatButton } from "antd";
+import { useOnlineStatus } from "./hooks/useOnlineStatus";
+import { Alert, ConfigProvider, Layout, FloatButton } from "antd";
 import ruRU from "antd/locale/ru_RU";
 
 function AppShell() {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith("/admin");
+  const online = useOnlineStatus();
 
   return (
     <div className="App" style={isAdmin ? { height: "auto", minHeight: "100%" } : undefined}>
+      {!online && (
+        <Alert
+          banner
+          showIcon
+          type="warning"
+          message="Нет соединения с интернетом. Сохранение недоступно. Введённые данные остаются в открытой форме."
+          role="status"
+        />
+      )}
       {!isAdmin ? (
         <Layout style={{ backgroundColor: "transparent " }}>
           <Header />
@@ -72,7 +83,7 @@ function App() {
       }}
     >
       <AuthProvider>
-        <Router basename="">
+        <Router basename={import.meta.env.BASE_URL}>
           <AppShell />
         </Router>
       </AuthProvider>

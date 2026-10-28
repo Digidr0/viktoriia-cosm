@@ -6,7 +6,7 @@ function Promotion(props) {
         <div className="promotion-video">
           <div className="video-shadow neu-inner"></div>
           <video
-            src={`/videos/vid${props.position % 5}.webm`}
+            src={`${import.meta.env.BASE_URL}videos/vid${props.position % 5}.webm`}
             preload="auto"
             autoPlay
             loop
@@ -14,7 +14,7 @@ function Promotion(props) {
           />
         </div>
         <div className="promotion-photo-container neu-drop">
-          <img className="promotion-photo" src={props.src} />
+          <img className="promotion-photo" src={props.src} alt={props.title} loading="lazy" decoding="async" />
         </div>
 
         <div className="promotion-title">

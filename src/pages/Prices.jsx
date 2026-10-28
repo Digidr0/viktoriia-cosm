@@ -1,9 +1,10 @@
 import PriceTable from "../components/PriceTable";
 import "./prices.css";
-import { Space, Spin, Alert } from "antd";
+import { Space, Spin, Alert, Button } from "antd";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { supabase } from "../utils/supabase";
+import { loadCatalog } from "../api/catalog";
+import { useOnlineStatus } from "../hooks/useOnlineStatus";
 
 function formatUpdatedAt(date) {
   if (!date) return null;
@@ -16,21 +17,14 @@ function formatUpdatedAt(date) {
   });
 }
 
-function getAnchorFromHash() {
-  // HashRouter: #/prices or #/prices#botox or legacy #botox after path
-  const raw = window.location.hash || "";
-  const parts = raw.split("#").filter(Boolean);
-  // e.g. ["/prices", "botox"] or ["botox"]
-  if (parts.length >= 2) return decodeURIComponent(parts[parts.length - 1]);
-  return null;
-}
-
 function Prices() {
   const location = useLocation();
   const [categories, setCategories] = useState([]);
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [reload, setReload] = useState(0);
+  const online = useOnlineStatus();
 
   useEffect(() => {
     let cancelled = false;
@@ -39,37 +33,23 @@ function Prices() {
       setLoading(true);
       setError(null);
 
-      const [catRes, svcRes] = await Promise.all([
-        supabase
-          .from("categories")
-          .select("id, name, slug, subtitle, description, sort_order")
-          .order("sort_order", { ascending: true }),
-        supabase
-          .from("services")
-          .select(
-            "id, category_id, title, price, description, duration, volume, sort_order, updated_at"
-          )
-          .order("sort_order", { ascending: true }),
-      ]);
-
-      if (cancelled) return;
-
-      if (catRes.error || svcRes.error) {
-        setError(catRes.error?.message || svcRes.error?.message);
-        setLoading(false);
-        return;
+      try {
+        const data = await loadCatalog();
+        if (cancelled) return;
+        setCategories(data.categories);
+        setServices(data.services);
+      } catch (err) {
+        if (!cancelled) setError(err.message || "Ошибка загрузки данных");
+      } finally {
+        if (!cancelled) setLoading(false);
       }
-
-      setCategories(catRes.data || []);
-      setServices(svcRes.data || []);
-      setLoading(false);
     }
 
     load();
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [online, reload]);
 
   const servicesByCategory = useMemo(() => {
     const map = new Map();
@@ -92,7 +72,12 @@ function Prices() {
 
   useEffect(() => {
     if (loading) return;
-    const anchor = getAnchorFromHash();
+    let anchor;
+    try {
+      anchor = decodeURIComponent(location.hash.slice(1));
+    } catch {
+      return;
+    }
     if (!anchor || anchor.startsWith("/")) return;
     const el = document.getElementById(anchor);
     if (el) {
@@ -120,6 +105,7 @@ function Prices() {
           message="Не удалось загрузить прайс"
           description={error}
           showIcon
+          action={<Button disabled={!online} onClick={() => setReload((value) => value + 1)}>Повторить</Button>}
         />
       </div>
     );

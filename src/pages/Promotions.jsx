@@ -1,45 +1,39 @@
 import "./promotions.css";
 import Promotion from "../components/Promotion";
-import BNCImage from "/docs/BNC.jpg";
+import BNCImage from "/docs/BNC.webp";
 import { useEffect, useState } from "react";
-import { Spin, Alert } from "antd";
-import { supabase } from "../utils/supabase";
+import { Spin, Alert, Button } from "antd";
+import { listPromotions } from "../api/promotions";
+import { useOnlineStatus } from "../hooks/useOnlineStatus";
 
 function Promotions() {
   const [promotions, setPromotions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [reload, setReload] = useState(0);
+  const online = useOnlineStatus();
 
   useEffect(() => {
     let cancelled = false;
 
     async function load() {
       setLoading(true);
-      const { data, error: err } = await supabase
-        .from("promotions")
-        .select(
-          "id, title, description, image_url, new_price, old_price, is_active, sort_order, updated_at"
-        )
-        .eq("is_active", true)
-        .order("sort_order", { ascending: true });
-
-      if (cancelled) return;
-
-      if (err) {
-        setError(err.message);
-        setLoading(false);
-        return;
+      setError(null);
+      try {
+        const data = await listPromotions({ activeOnly: true });
+        if (!cancelled) setPromotions(data);
+      } catch (err) {
+        if (!cancelled) setError(err.message || "Ошибка загрузки данных");
+      } finally {
+        if (!cancelled) setLoading(false);
       }
-
-      setPromotions(data || []);
-      setLoading(false);
     }
 
     load();
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [online, reload]);
 
   if (loading) {
     return (
@@ -52,7 +46,9 @@ function Promotions() {
   if (error) {
     return (
       <div className="Promotions Page" style={{ padding: "2em" }}>
-        <Alert type="error" message="Не удалось загрузить акции" description={error} showIcon />
+        <Alert type="error" message="Не удалось загрузить акции" description={error} showIcon
+          action={<Button disabled={!online} onClick={() => setReload((value) => value + 1)}>Повторить</Button>}
+        />
       </div>
     );
   }
@@ -75,7 +71,16 @@ function Promotions() {
           />
         ))}
         <div className="promo-header-title">NAD+ Complex</div>
-        <img className="BNC-image" style={{ borderRadius: 10 }} src={BNCImage} alt="NAD+ Complex" />
+        <img
+          className="BNC-image"
+          style={{ borderRadius: 10 }}
+          src={BNCImage}
+          alt="NAD+ Complex"
+          width={1000}
+          height={11935}
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
   );

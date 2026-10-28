@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,
   Form,
   Input,
@@ -7,13 +8,16 @@ import {
   Popconfirm,
   Select,
   Space,
+  Spin,
   Table,
   message,
 } from "antd";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-import { useEffect, useMemo, useState } from "react";
-import { supabase } from "../../utils/supabase";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { deleteService, loadCatalog, saveService } from "../../api/catalog";
 import { formatUpdatedAt } from "./slugify";
+import { useOnlineStatus } from "../../hooks/useOnlineStatus";
+import { saveErrorMessage } from "../../utils/network";
 
 const empty = {
   category_id: null,
@@ -25,53 +29,59 @@ const empty = {
   sort_order: 0,
 };
 
-function ServicesPanel() {
+function ServicesPanel({ onCategoryChange }) {
   const [categories, setCategories] = useState([]);
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filterCat, setFilterCat] = useState("all");
+  const [filterCat, setFilterCat] = useState(undefined);
+  const [pagination, setPagination] = useState({ current: 1, pageSize: 50 });
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
   const [saving, setSaving] = useState(false);
+  const savingRef = useRef(false);
+  const [saveError, setSaveError] = useState(null);
+  const [loadError, setLoadError] = useState(null);
+  const online = useOnlineStatus();
   const [editing, setEditing] = useState(null);
   const [form] = Form.useForm();
 
   async function load() {
     setLoading(true);
-    const [catRes, svcRes] = await Promise.all([
-      supabase
-        .from("categories")
-        .select("id, name, sort_order")
-        .order("sort_order", { ascending: true }),
-      supabase
-        .from("services")
-        .select(
-          "id, category_id, title, price, description, duration, volume, sort_order, updated_at"
-        )
-        .order("sort_order", { ascending: true }),
-    ]);
-
-    if (catRes.error || svcRes.error) {
-      message.error(catRes.error?.message || svcRes.error?.message);
+    setLoadError(null);
+    try {
+      const data = await loadCatalog();
+      setCategories(data.categories);
+      setRows(data.services);
+      setFilterCat((current) =>
+        data.categories.some((category) => String(category.id) === current)
+          ? current
+          : data.categories[0] ? String(data.categories[0].id) : undefined
+      );
+    } catch (error) {
+      setLoadError(error.message || "Не удалось загрузить услуги");
+    } finally {
+      setLoading(false);
     }
-    setCategories(catRes.data || []);
-    setRows(svcRes.data || []);
-    setLoading(false);
   }
 
   useEffect(() => {
     load();
-  }, []);
+  }, [online]);
 
   const catMap = useMemo(
     () => Object.fromEntries(categories.map((c) => [c.id, c.name])),
     [categories]
   );
 
+  const categoryTitle = catMap[filterCat] || "";
+  useEffect(() => {
+    onCategoryChange?.(categoryTitle);
+  }, [categoryTitle, onCategoryChange]);
+
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
     return rows.filter((r) => {
-      if (filterCat !== "all" && String(r.category_id) !== String(filterCat)) {
+      if (String(r.category_id) !== filterCat) {
         return false;
       }
       if (!q) return true;
@@ -84,17 +94,18 @@ function ServicesPanel() {
   }, [rows, filterCat, search, catMap]);
 
   function openCreate() {
+    setSaveError(null);
     setEditing(null);
     form.setFieldsValue({
       ...empty,
-      category_id:
-        filterCat !== "all" ? Number(filterCat) : categories[0]?.id ?? null,
+      category_id: categories.find((category) => String(category.id) === filterCat)?.id ?? null,
       sort_order: 0,
     });
     setOpen(true);
   }
 
   function openEdit(row) {
+    setSaveError(null);
     setEditing(row);
     form.setFieldsValue({
       category_id: row.category_id,
@@ -109,8 +120,17 @@ function ServicesPanel() {
   }
 
   async function onSave() {
-    const values = await form.validateFields();
+    if (savingRef.current) return;
+    savingRef.current = true;
+    let values;
+    try {
+      values = await form.validateFields();
+    } catch {
+      savingRef.current = false;
+      return;
+    }
     setSaving(true);
+    setSaveError(null);
     const payload = {
       category_id: values.category_id,
       title: values.title.trim(),
@@ -121,29 +141,27 @@ function ServicesPanel() {
       sort_order: Number(values.sort_order) || 0,
     };
 
-    const req = editing
-      ? supabase.from("services").update(payload).eq("id", editing.id)
-      : supabase.from("services").insert(payload);
-
-    const { error } = await req;
-    setSaving(false);
-    if (error) {
-      message.error(error.message);
-      return;
+    try {
+      await saveService(editing?.id, payload);
+      message.success(editing ? "Услуга обновлена" : "Услуга добавлена");
+      setOpen(false);
+      await load();
+    } catch (error) {
+      setSaveError(saveErrorMessage(error));
+    } finally {
+      setSaving(false);
+      savingRef.current = false;
     }
-    message.success(editing ? "Услуга обновлена" : "Услуга добавлена");
-    setOpen(false);
-    load();
   }
 
   async function onDelete(id) {
-    const { error } = await supabase.from("services").delete().eq("id", id);
-    if (error) {
-      message.error(error.message);
-      return;
+    try {
+      await deleteService(id);
+      message.success("Услуга удалена");
+      await load();
+    } catch (error) {
+      message.error(error.message || "Не удалось удалить услугу");
     }
-    message.success("Услуга удалена");
-    load();
   }
 
   const columns = [
@@ -228,23 +246,32 @@ function ServicesPanel() {
 
   return (
     <div>
+      {loadError && <Alert type="error" showIcon message="Не удалось обновить услуги" description={loadError}
+        action={<Button disabled={!online || loading} onClick={load}>Повторить</Button>}
+        style={{ marginBottom: 16 }} />}
       <div className="admin-toolbar">
         <div className="left">
           <Select
             style={{ minWidth: 200 }}
+            aria-label="Категория услуг"
+            placeholder="Нет категорий"
+            disabled={!categories.length || saving}
             value={filterCat}
-            onChange={setFilterCat}
-            options={[
-              { value: "all", label: "Все категории" },
-              ...categories.map((c) => ({ value: String(c.id), label: c.name })),
-            ]}
+            onChange={(value) => {
+              setFilterCat(value);
+              setPagination((current) => ({ ...current, current: 1 }));
+            }}
+            options={categories.map((c) => ({ value: String(c.id), label: c.name }))}
           />
           <Input.Search
             allowClear
             placeholder="Поиск..."
             style={{ width: 200 }}
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPagination((current) => ({ ...current, current: 1 }));
+            }}
           />
           <span style={{ opacity: 0.65 }}>{filtered.length} шт.</span>
         </div>
@@ -253,7 +280,7 @@ function ServicesPanel() {
             type="primary"
             icon={<PlusOutlined />}
             onClick={openCreate}
-            disabled={!categories.length}
+            disabled={!categories.length || !online || saving}
           >
             Добавить
           </Button>
@@ -265,7 +292,13 @@ function ServicesPanel() {
         loading={loading}
         columns={columns}
         dataSource={filtered}
-        pagination={{ pageSize: 20, showSizeChanger: true }}
+        pagination={{
+          current: Math.min(pagination.current, Math.max(1, Math.ceil(filtered.length / pagination.pageSize))),
+          pageSize: pagination.pageSize,
+          showSizeChanger: { showSearch: false },
+          pageSizeOptions: [10, 20, 50, 100],
+          onChange: (current, pageSize) => setPagination({ current, pageSize }),
+        }}
         size="middle"
         scroll={{ x: true }}
       />
@@ -273,15 +306,22 @@ function ServicesPanel() {
       <Modal
         title={editing ? "Редактировать услугу" : "Новая услуга"}
         open={open}
-        onCancel={() => setOpen(false)}
+        onCancel={() => { if (!saving) setOpen(false); }}
         onOk={onSave}
         confirmLoading={saving}
-        okText="Сохранить"
+        okText={saving ? "Сохраняем…" : "Сохранить"}
+        okButtonProps={{ disabled: !online || saving }}
+        cancelButtonProps={{ disabled: saving }}
+        closable={!saving}
+        maskClosable={!saving}
+        keyboard={!saving}
         cancelText="Отмена"
         destroyOnClose
         width={560}
       >
-        <Form form={form} layout="vertical" requiredMark={false}>
+        {saveError && <Alert type="error" showIcon message={saveError} role="alert" style={{ marginBottom: 16 }} />}
+        <Spin spinning={saving} tip="Сохраняем изменения…">
+        <Form form={form} layout="vertical" requiredMark={false} disabled={saving} aria-busy={saving}>
           <Form.Item
             label="Категория"
             name="category_id"
@@ -325,6 +365,7 @@ function ServicesPanel() {
             </div>
           ) : null}
         </Form>
+        </Spin>
       </Modal>
     </div>
   );

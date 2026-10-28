@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,
   Form,
   Input,
@@ -6,13 +7,16 @@ import {
   Modal,
   Popconfirm,
   Space,
+  Spin,
   Table,
   message,
 } from "antd";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-import { useEffect, useState } from "react";
-import { supabase } from "../../utils/supabase";
+import { useEffect, useRef, useState } from "react";
+import { deleteCategory, listCategories, saveCategory } from "../../api/catalog";
 import { slugify } from "./slugify";
+import { useOnlineStatus } from "../../hooks/useOnlineStatus";
+import { saveErrorMessage } from "../../utils/network";
 
 const empty = {
   name: "",
@@ -27,31 +31,38 @@ function CategoriesPanel() {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [saving, setSaving] = useState(false);
+  const savingRef = useRef(false);
+  const [saveError, setSaveError] = useState(null);
+  const [loadError, setLoadError] = useState(null);
+  const online = useOnlineStatus();
   const [editing, setEditing] = useState(null);
   const [form] = Form.useForm();
 
   async function load() {
     setLoading(true);
-    const { data, error } = await supabase
-      .from("categories")
-      .select("id, name, slug, subtitle, description, sort_order")
-      .order("sort_order", { ascending: true });
-    if (error) message.error(error.message);
-    setRows(data || []);
-    setLoading(false);
+    setLoadError(null);
+    try {
+      setRows(await listCategories());
+    } catch (error) {
+      setLoadError(error.message || "Не удалось загрузить категории");
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
     load();
-  }, []);
+  }, [online]);
 
   function openCreate() {
+    setSaveError(null);
     setEditing(null);
     form.setFieldsValue({ ...empty, sort_order: rows.length });
     setOpen(true);
   }
 
   function openEdit(row) {
+    setSaveError(null);
     setEditing(row);
     form.setFieldsValue({
       name: row.name,
@@ -64,8 +75,17 @@ function CategoriesPanel() {
   }
 
   async function onSave() {
-    const values = await form.validateFields();
+    if (savingRef.current) return;
+    savingRef.current = true;
+    let values;
+    try {
+      values = await form.validateFields();
+    } catch {
+      savingRef.current = false;
+      return;
+    }
     setSaving(true);
+    setSaveError(null);
     const payload = {
       name: values.name.trim(),
       slug: (values.slug || slugify(values.name)).trim(),
@@ -74,29 +94,27 @@ function CategoriesPanel() {
       sort_order: Number(values.sort_order) || 0,
     };
 
-    const req = editing
-      ? supabase.from("categories").update(payload).eq("id", editing.id)
-      : supabase.from("categories").insert(payload);
-
-    const { error } = await req;
-    setSaving(false);
-    if (error) {
-      message.error(error.message);
-      return;
+    try {
+      await saveCategory(editing?.id, payload);
+      message.success(editing ? "Категория обновлена" : "Категория добавлена");
+      setOpen(false);
+      await load();
+    } catch (error) {
+      setSaveError(saveErrorMessage(error));
+    } finally {
+      setSaving(false);
+      savingRef.current = false;
     }
-    message.success(editing ? "Категория обновлена" : "Категория добавлена");
-    setOpen(false);
-    load();
   }
 
   async function onDelete(id) {
-    const { error } = await supabase.from("categories").delete().eq("id", id);
-    if (error) {
-      message.error(error.message);
-      return;
+    try {
+      await deleteCategory(id);
+      message.success("Категория удалена");
+      await load();
+    } catch (error) {
+      message.error(error.message || "Не удалось удалить категорию");
     }
-    message.success("Категория удалена");
-    load();
   }
 
   const columns = [
@@ -154,13 +172,16 @@ function CategoriesPanel() {
 
   return (
     <div>
+      {loadError && <Alert type="error" showIcon message="Не удалось обновить категории" description={loadError}
+        action={<Button disabled={!online || loading} onClick={load}>Повторить</Button>}
+        style={{ marginBottom: 16 }} />}
       <div className="admin-toolbar">
         <div className="left">
           <strong>Категории</strong>
           <span style={{ opacity: 0.65 }}>{rows.length} шт.</span>
         </div>
         <div className="right">
-          <Button type="primary" icon={<PlusOutlined />} onClick={openCreate}>
+          <Button type="primary" icon={<PlusOutlined />} onClick={openCreate} disabled={!online || saving}>
             Добавить
           </Button>
         </div>
@@ -179,14 +200,21 @@ function CategoriesPanel() {
       <Modal
         title={editing ? "Редактировать категорию" : "Новая категория"}
         open={open}
-        onCancel={() => setOpen(false)}
+        onCancel={() => { if (!saving) setOpen(false); }}
         onOk={onSave}
         confirmLoading={saving}
-        okText="Сохранить"
+        okText={saving ? "Сохраняем…" : "Сохранить"}
+        okButtonProps={{ disabled: !online || saving }}
+        cancelButtonProps={{ disabled: saving }}
+        closable={!saving}
+        maskClosable={!saving}
+        keyboard={!saving}
         cancelText="Отмена"
         destroyOnClose
       >
-        <Form form={form} layout="vertical" requiredMark={false}>
+        {saveError && <Alert type="error" showIcon message={saveError} role="alert" style={{ marginBottom: 16 }} />}
+        <Spin spinning={saving} tip="Сохраняем изменения…">
+        <Form form={form} layout="vertical" requiredMark={false} disabled={saving} aria-busy={saving}>
           <Form.Item
             label="Название"
             name="name"
@@ -204,7 +232,7 @@ function CategoriesPanel() {
             label="Якорь (slug)"
             name="slug"
             rules={[{ required: true, message: "Укажите slug" }]}
-            extra="Латиницей, для ссылок: #/prices#massage"
+            extra="Латиницей, для ссылок: /prices#massage"
           >
             <Input placeholder="massage" />
           </Form.Item>
@@ -218,6 +246,7 @@ function CategoriesPanel() {
             <InputNumber min={0} style={{ width: "100%" }} />
           </Form.Item>
         </Form>
+        </Spin>
       </Modal>
     </div>
   );

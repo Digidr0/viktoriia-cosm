@@ -10,6 +10,13 @@
   flex-direction: column;
   gap: 1em;
 }
+
+.BNC-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
 .Promotion {
   border-radius: 0.5em;
   padding: 3vw;

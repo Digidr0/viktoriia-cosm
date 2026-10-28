@@ -1,5 +1,6 @@
-import { Button, Spin, Tabs } from "antd";
+import { Alert, Button, Spin, Tabs, message } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
+import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import CategoriesPanel from "./CategoriesPanel";
@@ -8,7 +9,12 @@ import PromotionsPanel from "./PromotionsPanel";
 import "./admin.css";
 
 function AdminDashboard() {
-  const { session, loading, signOut, user } = useAuth();
+  const { session, loading, signOut, user, isAdmin, accessError } = useAuth();
+  const [activeTab, setActiveTab] = useState("services");
+  const [categoryTitle, setCategoryTitle] = useState("");
+  const sectionTitle = activeTab === "services"
+    ? categoryTitle || "Услуги и цены"
+    : activeTab === "categories" ? "Категории" : "Акции";
 
   if (loading) {
     return (
@@ -20,6 +26,26 @@ function AdminDashboard() {
 
   if (!session) {
     return <Navigate to="/admin/login" replace />;
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="admin-login-wrap">
+        <div className="admin-login-card">
+          <h1>Нет доступа к управлению</h1>
+          <Alert
+            type="error"
+            showIcon
+            message={accessError || "У этого аккаунта нет прав администратора."}
+          />
+          <p>{user?.email}</p>
+          <Button onClick={() => signOut().catch(() => message.error("Не удалось выйти. Попробуйте ещё раз."))}>
+            Выйти и сменить аккаунт
+          </Button>
+          <Link to="/welcome"><Button type="link">На сайт</Button></Link>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -43,12 +69,14 @@ function AdminDashboard() {
         <div className="admin-card">
           <Tabs
             className="admin-tabs"
-            defaultActiveKey="services"
+            activeKey={activeTab}
+            onChange={setActiveTab}
+            tabBarExtraContent={<h2 className="admin-section-title">{sectionTitle}</h2>}
             items={[
               {
                 key: "services",
                 label: "Услуги и цены",
-                children: <ServicesPanel />,
+                children: <ServicesPanel onCategoryChange={setCategoryTitle} />,
               },
               {
                 key: "categories",

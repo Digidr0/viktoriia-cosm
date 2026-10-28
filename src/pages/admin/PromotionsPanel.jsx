@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,
   Form,
   Input,
@@ -6,14 +7,17 @@ import {
   Modal,
   Popconfirm,
   Space,
+  Spin,
   Switch,
   Table,
   message,
 } from "antd";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-import { useEffect, useState } from "react";
-import { supabase } from "../../utils/supabase";
+import { useEffect, useRef, useState } from "react";
+import { deletePromotion, listPromotions, savePromotion } from "../../api/promotions";
 import { formatUpdatedAt } from "./slugify";
+import { useOnlineStatus } from "../../hooks/useOnlineStatus";
+import { saveErrorMessage } from "../../utils/network";
 
 const empty = {
   title: "",
@@ -30,33 +34,38 @@ function PromotionsPanel() {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [saving, setSaving] = useState(false);
+  const savingRef = useRef(false);
+  const [saveError, setSaveError] = useState(null);
+  const [loadError, setLoadError] = useState(null);
+  const online = useOnlineStatus();
   const [editing, setEditing] = useState(null);
   const [form] = Form.useForm();
 
   async function load() {
     setLoading(true);
-    const { data, error } = await supabase
-      .from("promotions")
-      .select(
-        "id, title, description, image_url, new_price, old_price, is_active, sort_order, updated_at"
-      )
-      .order("sort_order", { ascending: true });
-    if (error) message.error(error.message);
-    setRows(data || []);
-    setLoading(false);
+    setLoadError(null);
+    try {
+      setRows(await listPromotions());
+    } catch (error) {
+      setLoadError(error.message || "Не удалось загрузить акции");
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
     load();
-  }, []);
+  }, [online]);
 
   function openCreate() {
+    setSaveError(null);
     setEditing(null);
     form.setFieldsValue({ ...empty, sort_order: rows.length });
     setOpen(true);
   }
 
   function openEdit(row) {
+    setSaveError(null);
     setEditing(row);
     form.setFieldsValue({
       title: row.title,
@@ -71,8 +80,17 @@ function PromotionsPanel() {
   }
 
   async function onSave() {
-    const values = await form.validateFields();
+    if (savingRef.current) return;
+    savingRef.current = true;
+    let values;
+    try {
+      values = await form.validateFields();
+    } catch {
+      savingRef.current = false;
+      return;
+    }
     setSaving(true);
+    setSaveError(null);
     const payload = {
       title: values.title.trim(),
       description: values.description?.trim() || null,
@@ -89,29 +107,27 @@ function PromotionsPanel() {
       sort_order: Number(values.sort_order) || 0,
     };
 
-    const req = editing
-      ? supabase.from("promotions").update(payload).eq("id", editing.id)
-      : supabase.from("promotions").insert(payload);
-
-    const { error } = await req;
-    setSaving(false);
-    if (error) {
-      message.error(error.message);
-      return;
+    try {
+      await savePromotion(editing?.id, payload);
+      message.success(editing ? "Акция обновлена" : "Акция добавлена");
+      setOpen(false);
+      await load();
+    } catch (error) {
+      setSaveError(saveErrorMessage(error));
+    } finally {
+      setSaving(false);
+      savingRef.current = false;
     }
-    message.success(editing ? "Акция обновлена" : "Акция добавлена");
-    setOpen(false);
-    load();
   }
 
   async function onDelete(id) {
-    const { error } = await supabase.from("promotions").delete().eq("id", id);
-    if (error) {
-      message.error(error.message);
-      return;
+    try {
+      await deletePromotion(id);
+      message.success("Акция удалена");
+      await load();
+    } catch (error) {
+      message.error(error.message || "Не удалось удалить акцию");
     }
-    message.success("Акция удалена");
-    load();
   }
 
   const columns = [
@@ -182,13 +198,16 @@ function PromotionsPanel() {
 
   return (
     <div>
+      {loadError && <Alert type="error" showIcon message="Не удалось обновить акции" description={loadError}
+        action={<Button disabled={!online || loading} onClick={load}>Повторить</Button>}
+        style={{ marginBottom: 16 }} />}
       <div className="admin-toolbar">
         <div className="left">
           <strong>Акции</strong>
           <span style={{ opacity: 0.65 }}>{rows.length} шт.</span>
         </div>
         <div className="right">
-          <Button type="primary" icon={<PlusOutlined />} onClick={openCreate}>
+          <Button type="primary" icon={<PlusOutlined />} onClick={openCreate} disabled={!online || saving}>
             Добавить
           </Button>
         </div>
@@ -207,14 +226,21 @@ function PromotionsPanel() {
       <Modal
         title={editing ? "Редактировать акцию" : "Новая акция"}
         open={open}
-        onCancel={() => setOpen(false)}
+        onCancel={() => { if (!saving) setOpen(false); }}
         onOk={onSave}
         confirmLoading={saving}
-        okText="Сохранить"
+        okText={saving ? "Сохраняем…" : "Сохранить"}
+        okButtonProps={{ disabled: !online || saving }}
+        cancelButtonProps={{ disabled: saving }}
+        closable={!saving}
+        maskClosable={!saving}
+        keyboard={!saving}
         cancelText="Отмена"
         destroyOnClose
       >
-        <Form form={form} layout="vertical" requiredMark={false}>
+        {saveError && <Alert type="error" showIcon message={saveError} role="alert" style={{ marginBottom: 16 }} />}
+        <Spin spinning={saving} tip="Сохраняем изменения…">
+        <Form form={form} layout="vertical" requiredMark={false} disabled={saving} aria-busy={saving}>
           <Form.Item
             label="Название"
             name="title"
@@ -256,6 +282,7 @@ function PromotionsPanel() {
             </div>
           ) : null}
         </Form>
+        </Spin>
       </Modal>
     </div>
   );

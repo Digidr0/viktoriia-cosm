@@ -1,51 +1,98 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { supabase } from "../utils/supabase";
+import { checkAdminAccess, getSession, signIn, signOut, subscribeToAuthChanges } from "../api/auth";
+import { useOnlineStatus } from "../hooks/useOnlineStatus";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [adminAccess, setAdminAccess] = useState(null);
+  const online = useOnlineStatus();
 
   useEffect(() => {
     let mounted = true;
+    let receivedAuthEvent = false;
 
-    supabase.auth.getSession().then(({ data }) => {
-      if (!mounted) return;
-      setSession(data.session ?? null);
-      setLoading(false);
+    getSession().then((next) => {
+      if (!mounted || receivedAuthEvent) return;
+      setSession(next);
+      setAuthLoading(false);
+    }).catch(() => {
+      if (!mounted || receivedAuthEvent) return;
+      setSession(null);
+      setAuthLoading(false);
     });
 
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, next) => {
+    const unsubscribe = subscribeToAuthChanges((_event, next) => {
+      if (!mounted) return;
+      receivedAuthEvent = true;
       setSession(next);
-      setLoading(false);
+      setAuthLoading(false);
     });
 
     return () => {
       mounted = false;
-      sub.subscription.unsubscribe();
+      unsubscribe();
     };
   }, []);
+
+  // Run outside the Auth callback to avoid nested Supabase/Auth lock requests.
+  useEffect(() => {
+    if (!session) {
+      setAdminAccess(null);
+      return;
+    }
+    if (!online) {
+      // Keep an already verified editor mounted so an open draft is not lost.
+      setAdminAccess((current) => current?.session === session ? current : {
+        session,
+        isAdmin: false,
+        error: "Нет соединения с интернетом. Проверка прав возобновится после подключения.",
+      });
+      return;
+    }
+    let cancelled = false;
+
+    async function checkAccess() {
+      try {
+        const isAdmin = await checkAdminAccess();
+        if (!cancelled) {
+          setAdminAccess({ session, isAdmin, error: null });
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setAdminAccess({
+            session,
+            isAdmin: false,
+            error: error.message || "Не удалось проверить права доступа. Попробуйте войти снова или обратитесь к администратору.",
+          });
+        }
+      }
+    }
+
+    checkAccess();
+    return () => {
+      cancelled = true;
+    };
+  }, [session, online]);
+
+  const accessReady = adminAccess?.session === session;
+  const loading = authLoading || Boolean(session && !accessReady);
+  const isAdmin = Boolean(session && accessReady && adminAccess?.isAdmin);
+  const accessError = accessReady ? adminAccess?.error : null;
 
   const value = useMemo(
     () => ({
       session,
       user: session?.user ?? null,
       loading,
-      async signIn(email, password) {
-        const { data, error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-        if (error) throw error;
-        return data;
-      },
-      async signOut() {
-        const { error } = await supabase.auth.signOut();
-        if (error) throw error;
-      },
+      isAdmin,
+      accessError,
+      signIn,
+      signOut,
     }),
-    [session, loading]
+    [session, loading, isAdmin, accessError]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -1,5 +1,6 @@
-import { Button, Divider, Image, Space } from "antd";
+import { Button, Divider, Space } from "antd";
 import Service from "../components/Service";
+import ContentImage from "../components/ContentImage";
 import "./welcome.css";
 import portraitImg from "/Portrait-3_bg.jpg";
 import data from "../data/services.json";
@@ -22,11 +23,15 @@ function Welcome(props) {
             Записаться прямо сейчас
           </Button>
         </div>
-        <Image
-          width={"100%"}
-          className="portrait"
+        <ContentImage
+          className="portrait-media"
+          imageClassName="portrait"
           src={portraitImg}
-          preview={false}
+          alt="Косметолог Виктория"
+          width={512}
+          height={512}
+          loading="eager"
+          fetchPriority="high"
         />
       </div>
       <Divider
@@ -48,7 +53,7 @@ function Welcome(props) {
         {data.map((service, i) => {
           return (
             <Service
-              src={'/services/' + service.src}
+              src={import.meta.env.BASE_URL + 'services/' + service.src}
               descripion={service.descripion}
               text={service.text}
               anchor={service.anchor}

@@ -1,6 +1,5 @@
 import { Button, Menu, Space } from "antd";
 import { Link, useLocation } from "react-router-dom";
-import React, { useState } from "react";
 import { DownCircleOutlined, UnorderedListOutlined, SendOutlined, FireTwoTone, HomeOutlined } from "@ant-design/icons";
 const items = [
   {
@@ -35,12 +34,11 @@ const items = [
   },
 ];
 function Header(props) {
-  const [current, setCurrent] = useState(useLocation().pathname);
+  const { pathname } = useLocation();
   return (
     <div className="Header component">
       <Menu
-        onClick={(e) => setCurrent(e.key)}
-        selectedKeys={[current]}
+        selectedKeys={[pathname]}
         mode="horizontal"
         items={items}
         style={{ display: "flex", justifyContent: "space-evenly", borderBottom: "none"}}

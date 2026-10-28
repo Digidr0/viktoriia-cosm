@@ -5,6 +5,7 @@
   "homepage": "https://digidr0.github.io/viktoriia-cosm",
   "type": "module",
   "scripts": {
+    "test": "node --experimental-vm-modules --test tests/*.test.mjs",
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
