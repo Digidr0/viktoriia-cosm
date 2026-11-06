@@ -11,9 +11,9 @@ async (page) => {
         if (holdBundle) pending.push(route);
         else return route.continue();
       });
-      await p.route(/\/viktoriia-cosm\/(Portrait-3_bg\.jpg|services\/[^?]+\.webp)/, () => {});
+      await p.route(/\/(Portrait-3_bg\.jpg|services\/[^?]+\.webp)/, () => {});
       await p.clock.install();
-      await p.goto("http://127.0.0.1:4173/viktoriia-cosm/welcome", { waitUntil: "commit" });
+      await p.goto("http://127.0.0.1:4173/welcome", { waitUntil: "commit" });
       await p.locator("#startup-screen").waitFor();
       await p.getByText("Загружаем сайт…", { exact: true }).waitFor();
       if (await p.locator(".content-image-skeleton").count()) throw new Error("Skeleton appeared before bundle was ready");
@@ -44,7 +44,7 @@ async (page) => {
   const noJsContext = await page.context().browser().newContext({ javaScriptEnabled: false });
   try {
     const p = await noJsContext.newPage();
-    await p.goto("http://127.0.0.1:4173/viktoriia-cosm/", { waitUntil: "domcontentloaded" });
+    await p.goto("http://127.0.0.1:4173/", { waitUntil: "domcontentloaded" });
     await p.getByText("Для работы сайта включите JavaScript в браузере.", { exact: true }).waitFor();
     if (await p.locator("#startup-dots").isVisible()) throw new Error("Endless spinner with JavaScript disabled");
     results.push({ javascriptDisabledMessage: true });

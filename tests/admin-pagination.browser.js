@@ -37,7 +37,7 @@ async (page) => {
         : route.request().url().includes("/categories") ? categories : services,
       headers,
     }));
-    await p.goto("http://127.0.0.1:4173/viktoriia-cosm/admin/login");
+    await p.goto("http://127.0.0.1:4173/admin/login");
     await p.getByLabel("Email", { exact: true }).fill(user.email);
     await p.getByLabel("Пароль", { exact: true }).fill("not-real-password");
     await p.getByRole("button", { name: "Войти", exact: true }).click();

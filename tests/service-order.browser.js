@@ -23,7 +23,7 @@ async (page) => {
       return route.fulfill({ json: url.pathname.includes("/rpc/") ? true : url.pathname.includes("/categories")
         ? [{ id: 1, name: "Категория", sort_order: 0 }] : [...services].sort((a, b) => a.sort_order - b.sort_order || a.id - b.id) });
     });
-    await p.goto("http://127.0.0.1:4173/viktoriia-cosm/admin/login");
+    await p.goto("http://127.0.0.1:4173/admin/login");
     await p.getByLabel("Email", { exact: true }).fill(user.email);
     await p.getByLabel("Пароль", { exact: true }).fill("test-password");
     await p.getByRole("button", { name: "Войти", exact: true }).click();

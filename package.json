@@ -2,7 +2,7 @@
   "name": "viktoriia-cosm",
   "private": true,
   "version": "0.0.1",
-  "homepage": "https://digidr0.github.io/viktoriia-cosm",
+  "homepage": "https://vika.beauty",
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules --test tests/*.test.mjs",

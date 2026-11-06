@@ -7,11 +7,11 @@ async (page) => {
     try {
       const pending = [];
       let hold = true;
-      await p.route(/\/viktoriia-cosm\/(Portrait-3_bg\.jpg|services\/[^?]+\.webp)/, (route) => {
+      await p.route(/\/(Portrait-3_bg\.jpg|services\/[^?]+\.webp)/, (route) => {
         if (hold) pending.push(route);
         else return route.continue();
       });
-      await p.goto("http://127.0.0.1:4173/viktoriia-cosm/welcome", { waitUntil: "domcontentloaded" });
+      await p.goto("http://127.0.0.1:4173/welcome", { waitUntil: "domcontentloaded" });
       await p.evaluate(() => document.fonts.ready);
       await p.locator(".portrait-media .content-image-skeleton").waitFor();
       const portraitBefore = await p.locator(".portrait-media").boundingBox();
